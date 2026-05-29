@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#fef3c7">
-  <meta name="description" content="Kevin's shortlist of Hong Kong dinner picks for our group meal — 19 sit-down options across Central, Wan Chai, Soho, and Kowloon.">
+  <meta name="description" content="Kevin's shortlist of Hong Kong dinner picks for our group meal — 19 sit-down options + 7 dai pai dong alternatives across Hong Kong Island, Kowloon, and the New Territories.">
   <title>HK Dinner Options — Kevin's shortlist</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%BD%EF%B8%8F%3C/text%3E%3C/svg%3E">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -51,20 +51,39 @@
       to drop the venue name straight into the group chat.
     </p>
     <p class="text-slate-500 text-sm mt-3">
-      19 sit-down picks across Hong Kong Island + Kowloon. Mix of Michelin, neighborhood favorites, and crowd-pleasers.
+      19 sit-down picks + 7 dai pai dong alternatives across Hong Kong Island, Kowloon, and the New Territories. Mix of Michelin, neighborhood favorites, crowd-pleasers, and street-stall classics.
     </p>
   </header>
 
   <!-- Grid -->
   <main class="max-w-6xl mx-auto px-5 pb-12">
     <div id="grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+
+    <!-- DPD section -->
+    <section class="mt-12 pt-8 border-t border-stone-200">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl sm:text-3xl" aria-hidden="true">🥡</span>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Dai Pai Dong alternatives — if you'd rather do street-stall</h2>
+      </div>
+      <p class="text-slate-600 text-sm leading-relaxed max-w-2xl mb-6">
+        Cash-only by default — Ladies' Street Sik Faan + Chan Kun Kee also take card.
+      </p>
+
+      <h3 class="text-base font-semibold text-slate-800 mt-2 mb-3">HK Island</h3>
+      <div id="dpd-grid-hki" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+
+      <h3 class="text-base font-semibold text-slate-800 mt-8 mb-3">Kowloon</h3>
+      <div id="dpd-grid-klw" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+
+      <h3 class="text-base font-semibold text-slate-800 mt-8 mb-3">New Territories</h3>
+      <div id="dpd-grid-nt" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+    </section>
   </main>
 
   <!-- Footer -->
   <footer class="max-w-6xl mx-auto px-5 pb-12 pt-4 border-t border-stone-200 mt-4">
     <p class="text-slate-600 text-sm leading-relaxed">
-      <span class="font-semibold text-slate-800">Side note:</span> Kevin's also open to any
-      <span class="italic">dai pai dong</span> if you'd rather do a street-stall vibe — let him know and he'll scout one near the chosen area.
+      <span class="font-semibold text-slate-800">DPD note:</span> picks are cash-friendly and walk-in unless noted. For groups of 5+, arrive 15 min before opening for outdoor tables.
     </p>
     <p class="text-slate-400 text-xs mt-4">Last updated 2026-05-29 · Built for friends, not for SEO · No tracking on this page.</p>
   </footer>
@@ -303,7 +322,104 @@
       }
     ];
 
+    const dpdVenues = [
+      {
+        name: "Sing Kee",
+        zh: "盛記",
+        cuisine: "Cantonese · Stir-fry",
+        hood: "Central · Stanley Street",
+        area: "hki",
+        why: "Central's last great outdoor DPD — plastic stools under umbrellas on Stanley Street. Chilli pepper squid, stir-fried crab, sizzling clay-pot eggplant. ~HK$80/pax.",
+        address: "9-10 Stanley Street, Central · MTR Central · cash only",
+        price: "$",
+        hours: "Daily 11:00–15:00, 17:00–23:00",
+        phone: "+852 2541 5678",
+        maps: "https://www.google.com/maps/search/Sing+Kee+Stanley+Street+Central+Hong+Kong"
+      },
+      {
+        name: "Keung Kee (Wan Chai)",
+        zh: "強記美食",
+        cuisine: "Glutinous rice · Pan-fried rice rolls",
+        hood: "Wan Chai · Lockhart Road",
+        area: "hki",
+        why: "Famous for 生炒糯米飯 (wok-tossed glutinous rice) + 煎腸粉 (pan-fried rice rolls). Casual, locals-heavy. Different shop from the Sham Shui Po Keung Kee.",
+        address: "G/F, 406 Lockhart Road, Wan Chai · MTR Wan Chai · cash only · closed Mondays",
+        price: "$",
+        hours: "Tue–Sun 12:00–22:00 · Mon closed",
+        phone: "",
+        maps: "https://www.google.com/maps/search/Keung+Kee+406+Lockhart+Road+Wan+Chai"
+      },
+      {
+        name: "Hip Shing Dai Pai Dong",
+        zh: "協成",
+        cuisine: "Cantonese · Stir-fry",
+        hood: "Fortress Hill · Electric Road",
+        area: "hki",
+        why: "Hidden-gem family-run DPD. Long all-day hours, locals-only crowd, low tourist factor.",
+        address: "G/F, 130 Electric Road, Fortress Hill · MTR Fortress Hill · cash only",
+        price: "$",
+        hours: "Daily 11:00–23:00",
+        phone: "+852 2571 2222",
+        maps: "https://www.google.com/maps/search/Hip+Shing+130+Electric+Road+Fortress+Hill"
+      },
+      {
+        name: "Oi Man Sang",
+        zh: "愛文生",
+        cuisine: "Cantonese · Wok Hei Seafood",
+        hood: "Sham Shui Po",
+        area: "klw",
+        why: "Since 1956 — one of HK's oldest DPDs. Indoor A/C, wok fires on the street. Salt-and-pepper squid, garlic-steamed razor clams, salted-egg-yolk prawns. Each dish feeds 2-3, built for group ordering. Electronic queue, 30-60 min peak wait.",
+        address: "1A-1C Shek Kip Mei Street, Sham Shui Po · MTR Sham Shui Po · cash only",
+        price: "$$",
+        hours: "Daily 16:30–24:00 (last order 23:00)",
+        phone: "+852 2393 9315",
+        maps: "https://www.google.com/maps/search/Oi+Man+Sang+Shek+Kip+Mei+Street+Sham+Shui+Po"
+      },
+      {
+        name: "Dai Lee Dai Pai Dong",
+        zh: "大利美食大排檔",
+        cuisine: "Cantonese · Home Cooking",
+        hood: "Sham Shui Po · Pei Ho Street",
+        area: "klw",
+        why: "50+ years, family-operated. Upstairs in Pei Ho Street Market cooked-food centre. Deep-fried whole pigeon with spiced salt, minced pork + salted fish braised eggplant, wok-fried chicken with mushrooms. Hot pot for groups.",
+        address: "Shop CF1, 2/F, Cooked Food Centre, Pei Ho Street Market, 333 Ki Lung Street, Sham Shui Po · MTR Sham Shui Po · cash only",
+        price: "$",
+        hours: "Dinner service (call to confirm)",
+        phone: "+852 9619 7148",
+        maps: "https://www.google.com/maps/search/Pei+Ho+Street+Market+Cooked+Food+Centre+Sham+Shui+Po"
+      },
+      {
+        name: "Ladies' Street Sik Faan",
+        zh: "女人街食飯公司",
+        cuisine: "Modern DPD-style",
+        hood: "Mong Kok · Tung Choi Street",
+        area: "klw",
+        why: "Modern DPD take — neon signs, iron gates. Prawn toast, honey pepper beef + potato, sweet-and-sour pork. Indoor A/C, reservations OK, easier for mixed-language group. 90-min table limit.",
+        address: "Shop B, 1/F, Witty Commercial Bldg, 1A-1L Tung Choi Street, Mong Kok · MTR Mong Kok · cash + card",
+        price: "$$",
+        hours: "Daily 18:00–24:00",
+        phone: "Call ahead to reserve",
+        maps: "https://www.google.com/maps/search/Witty+Commercial+Building+Tung+Choi+Street+Mong+Kok"
+      },
+      {
+        name: "Chan Kun Kee",
+        zh: "陳根記",
+        cuisine: "Cantonese DPD (modernized)",
+        hood: "Shek Mun, Sha Tin · Kings Wing Plaza 2",
+        area: "nt",
+        why: "40+ years. Relocated indoors 2018 to A/C venue with 12 stoves and 90 tables — by far the biggest group capacity. Roast pigeon, deep-fried oyster cakes, salt-and-pepper squid, hand-shredded chicken with wasabi, clams in tom yum broth. ~30 min MTR from Admiralty via East Rail Line. Open till 1:30 AM.",
+        address: "Kings Wing Plaza 2, 1 On Kwan Street, Shek Mun, Sha Tin · MTR Shek Mun · cash + card",
+        price: "$$",
+        hours: "Daily 17:00–01:30",
+        phone: "SevenRooms / walk-in",
+        maps: "https://www.google.com/maps/search/Chan+Kun+Kee+Kings+Wing+Plaza+Shek+Mun+Sha+Tin"
+      }
+    ];
+
     const grid = document.getElementById('grid');
+    const dpdGridHki = document.getElementById('dpd-grid-hki');
+    const dpdGridKlw = document.getElementById('dpd-grid-klw');
+    const dpdGridNt = document.getElementById('dpd-grid-nt');
     const toast = document.getElementById('toast');
 
     function showToast(text) {
@@ -331,50 +447,62 @@
       return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
 
-    function render() {
-      grid.innerHTML = venues.map((v, i) => {
-        const zh = v.zh ? `<p class="text-sm text-slate-500 mt-0.5">${escapeHtml(v.zh)}</p>` : '';
-        const phone = v.phone ? `<span class="inline-flex items-center gap-1"><span aria-hidden="true">☎</span><a href="tel:${escapeHtml(v.phone.replace(/\s+/g,''))}" class="hover:text-amber-700 underline-offset-2 hover:underline">${escapeHtml(v.phone)}</a></span>` : '';
-        const hours = v.hours ? `<p class="text-xs text-slate-500 mt-1 leading-snug"><span aria-hidden="true">🕒</span> ${escapeHtml(v.hours)}</p>` : '';
-        return `
-          <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm">
-            <header>
-              <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">${escapeHtml(v.name)}</h2>
-              ${zh}
-            </header>
+    function cardHtml(v) {
+      const zh = v.zh ? `<p class="text-sm text-slate-500 mt-0.5">${escapeHtml(v.zh)}</p>` : '';
+      const phone = v.phone ? `<span class="inline-flex items-center gap-1"><span aria-hidden="true">☎</span><a href="tel:${escapeHtml(v.phone.replace(/\s+/g,''))}" class="hover:text-amber-700 underline-offset-2 hover:underline">${escapeHtml(v.phone)}</a></span>` : '';
+      const hours = v.hours ? `<p class="text-xs text-slate-500 mt-1 leading-snug"><span aria-hidden="true">🕒</span> ${escapeHtml(v.hours)}</p>` : '';
+      return `
+        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm">
+          <header>
+            <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">${escapeHtml(v.name)}</h2>
+            ${zh}
+          </header>
 
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-medium">${escapeHtml(v.cuisine)}</span>
-              <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 font-medium">${escapeHtml(v.hood)}</span>
-              <span class="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-medium">${escapeHtml(v.price)}</span>
-            </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-medium">${escapeHtml(v.cuisine)}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 font-medium">${escapeHtml(v.hood)}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-medium">${escapeHtml(v.price)}</span>
+          </div>
 
-            <p class="text-sm text-slate-700 italic leading-snug">${escapeHtml(v.why)}</p>
+          <p class="text-sm text-slate-700 italic leading-snug">${escapeHtml(v.why)}</p>
 
-            <div class="text-xs text-slate-600 leading-relaxed flex flex-col gap-1 mt-1">
-              <p><span aria-hidden="true">📍</span> ${escapeHtml(v.address)}</p>
-              ${phone ? `<p>${phone}</p>` : ''}
-              ${hours}
-            </div>
+          <div class="text-xs text-slate-600 leading-relaxed flex flex-col gap-1 mt-1">
+            <p><span aria-hidden="true">📍</span> ${escapeHtml(v.address)}</p>
+            ${phone ? `<p>${phone}</p>` : ''}
+            ${hours}
+          </div>
 
-            <div class="mt-auto pt-2 flex flex-col sm:flex-row gap-2">
-              <a href="${escapeHtml(v.maps)}" target="_blank" rel="noopener noreferrer"
-                class="flex-1 inline-flex items-center justify-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
-                <span aria-hidden="true">🗺️</span> Open in Maps
-              </a>
-              <button type="button" data-copy="${escapeHtml(v.name)}"
-                class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
-                <span aria-hidden="true">💬</span> Copy name
-              </button>
-            </div>
-          </article>
-        `;
-      }).join('');
+          <div class="mt-auto pt-2 flex flex-col sm:flex-row gap-2">
+            <a href="${escapeHtml(v.maps)}" target="_blank" rel="noopener noreferrer"
+              class="flex-1 inline-flex items-center justify-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
+              <span aria-hidden="true">🗺️</span> Open in Maps
+            </a>
+            <button type="button" data-copy="${escapeHtml(v.name)}"
+              class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
+              <span aria-hidden="true">💬</span> Copy name
+            </button>
+          </div>
+        </article>
+      `;
+    }
 
-      grid.addEventListener('click', (e) => {
+    function attachCopyHandler(el) {
+      el.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-copy]');
         if (btn) copyName(btn.getAttribute('data-copy'));
       });
+    }
+
+    function render() {
+      grid.innerHTML = venues.map(cardHtml).join('');
+      attachCopyHandler(grid);
+
+      dpdGridHki.innerHTML = dpdVenues.filter(v => v.area === 'hki').map(cardHtml).join('');
+      dpdGridKlw.innerHTML = dpdVenues.filter(v => v.area === 'klw').map(cardHtml).join('');
+      dpdGridNt.innerHTML  = dpdVenues.filter(v => v.area === 'nt').map(cardHtml).join('');
+      attachCopyHandler(dpdGridHki);
+      attachCopyHandler(dpdGridKlw);
+      attachCopyHandler(dpdGridNt);
     }
 
     render();
