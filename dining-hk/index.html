@@ -36,6 +36,38 @@
       z-index: 50;
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+    /* picks bottom bar */
+    #picks-bar {
+      position: fixed; left: 0; right: 0; bottom: 0;
+      background: rgb(15 23 42 / 0.92);
+      color: white;
+      padding: 12px 16px env(safe-area-inset-bottom, 12px) 16px;
+      border-top-left-radius: 16px; border-top-right-radius: 16px;
+      box-shadow: 0 -10px 30px -8px rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 40;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      max-width: 72rem; margin: 0 auto;
+    }
+    @media (min-width: 640px) {
+      #picks-bar { left: 16px; right: 16px; bottom: 16px; border-radius: 16px; }
+    }
+    #picks-bar[hidden] { display: none; }
+    /* clipboard-fallback overlay */
+    .picks-fallback {
+      position: fixed; inset: 0; background: rgba(15,23,42,.65);
+      z-index: 60; display: flex; align-items: center; justify-content: center; padding: 16px;
+    }
+    .picks-fallback-inner {
+      background: white; border-radius: 14px; padding: 16px; max-width: 36rem; width: 100%;
+      box-shadow: 0 20px 50px -10px rgba(0,0,0,.5);
+    }
+    .picks-fallback textarea {
+      width: 100%; min-height: 220px; padding: 10px; border: 1px solid rgb(203 213 225);
+      border-radius: 8px; font-size: 14px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: rgb(15 23 42);
+    }
   </style>
 </head>
 <body class="bg-stone-50 text-slate-900 antialiased font-sans">
@@ -97,6 +129,25 @@
   </footer>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Floating picks bar (hidden until ≥1 pick) -->
+  <div id="picks-bar" hidden aria-label="Your picks">
+    <span id="picks-count" role="status" aria-live="polite" class="font-semibold text-sm sm:text-base">0 picked</span>
+    <div class="flex items-center gap-2">
+      <button type="button" id="picks-copy"
+        class="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm px-3.5 py-2 rounded-lg transition-colors">
+        <span aria-hidden="true">📋</span> Copy picks
+      </button>
+      <button type="button" id="picks-clear"
+        class="inline-flex items-center gap-1.5 bg-slate-700 hover:bg-slate-600 text-white font-medium text-sm px-3 py-2 rounded-lg transition-colors"
+        aria-label="Clear all picks">
+        <span aria-hidden="true">✕</span> Clear
+      </button>
+    </div>
+  </div>
+
+  <!-- Bottom padding spacer so cards aren't hidden behind the picks bar on mobile -->
+  <div id="picks-bar-spacer" class="h-24" hidden></div>
 
   <script>
     const venues = [
@@ -574,6 +625,23 @@
       return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
 
+    function slugify(s) {
+      return s.toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+    }
+
+    // Assign stable IDs to every venue row, in-place.
+    venues.forEach((v, i) => { v.id = `sit-${slugify(v.name)}-${i}`; });
+    dpdVenues.forEach((v, i) => { v.id = `dpd-${slugify(v.name)}-${i}`; });
+
+    // Lookup map for picks → venue row.
+    const venueById = new Map();
+    venues.forEach(v => venueById.set(v.id, { ...v, _kind: 'sit' }));
+    dpdVenues.forEach(v => venueById.set(v.id, { ...v, _kind: 'dpd' }));
+
     const SEATING_BADGE = {
       indoor:  { label: '❄️ Indoor A/C',   classes: 'bg-sky-100 text-sky-800' },
       outdoor: { label: '🌬️ Outdoor',      classes: 'bg-amber-100 text-amber-800' },
@@ -589,8 +657,9 @@
         ? `<span class="text-xs px-2 py-0.5 rounded-full ${seatingMeta.classes} font-medium">${seatingMeta.label}</span>`
         : '';
       const dataSeating = v.seating ? ` data-seating="${escapeHtml(v.seating)}"` : '';
+      const venueId = escapeHtml(v.id);
       return `
-        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm"${dataSeating}>
+        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm" data-venue-id="${venueId}"${dataSeating}>
           <header>
             <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">${escapeHtml(v.name)}</h2>
             ${zh}
@@ -619,6 +688,10 @@
             <button type="button" data-copy="${escapeHtml(v.name)}"
               class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
               <span aria-hidden="true">💬</span> Copy name
+            </button>
+            <button type="button" data-pick="${venueId}" aria-pressed="false"
+              class="pick-btn flex-1 inline-flex items-center justify-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
+              <span class="pick-label"><span aria-hidden="true">👍</span> Pick</span>
             </button>
           </div>
         </article>
@@ -670,8 +743,156 @@
       });
     }
 
+    // ---------- Picks (client-side voting + clipboard export) ----------
+    const PICKS_KEY = 'dining-hk:picks';
+    const picksBar = document.getElementById('picks-bar');
+    const picksBarSpacer = document.getElementById('picks-bar-spacer');
+    const picksCountEl = document.getElementById('picks-count');
+    const picksCopyBtn = document.getElementById('picks-copy');
+    const picksClearBtn = document.getElementById('picks-clear');
+
+    let picks = []; // ordered list of venue IDs
+
+    function loadPicks() {
+      try {
+        const raw = localStorage.getItem(PICKS_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          picks = parsed.filter(id => typeof id === 'string' && venueById.has(id));
+        }
+      } catch { /* ignore corrupt JSON */ }
+    }
+
+    function persistPicks() {
+      try { localStorage.setItem(PICKS_KEY, JSON.stringify(picks)); } catch {}
+    }
+
+    function syncPickButtons() {
+      document.querySelectorAll('button[data-pick]').forEach(btn => {
+        const id = btn.dataset.pick;
+        const on = picks.includes(id);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.classList.toggle('bg-emerald-50', !on);
+        btn.classList.toggle('hover:bg-emerald-100', !on);
+        btn.classList.toggle('text-emerald-800', !on);
+        btn.classList.toggle('border-emerald-200', !on);
+        btn.classList.toggle('bg-emerald-600', on);
+        btn.classList.toggle('hover:bg-emerald-700', on);
+        btn.classList.toggle('text-white', on);
+        btn.classList.toggle('border-emerald-700', on);
+        const label = btn.querySelector('.pick-label');
+        if (label) label.innerHTML = on
+          ? '<span aria-hidden="true">✅</span> Picked'
+          : '<span aria-hidden="true">👍</span> Pick';
+      });
+    }
+
+    function renderBar() {
+      const n = picks.length;
+      picksCountEl.textContent = `${n} picked`;
+      const visible = n > 0;
+      picksBar.hidden = !visible;
+      picksBarSpacer.hidden = !visible;
+      picksCopyBtn.disabled = n === 0;
+      picksCopyBtn.title = n === 0 ? 'Pick at least 1 venue.' : '';
+    }
+
+    function togglePick(id) {
+      if (!venueById.has(id)) return;
+      const i = picks.indexOf(id);
+      if (i === -1) picks.push(id); else picks.splice(i, 1);
+      persistPicks();
+      syncPickButtons();
+      renderBar();
+    }
+
+    function clearPicks() {
+      picks = [];
+      persistPicks();
+      syncPickButtons();
+      renderBar();
+    }
+
+    function formatPicksForClipboard() {
+      const n = picks.length;
+      const lines = picks.map(id => {
+        const v = venueById.get(id);
+        if (!v) return null;
+        const cuisineParens = v._kind === 'dpd' && v.cuisine ? ` (${v.cuisine})` : '';
+        const hood = v.hood || '';
+        return `• ${v.name}${cuisineParens} — ${hood} — ${v.maps}`;
+      }).filter(Boolean);
+      return `My HK dinner picks (${n}):\n\n${lines.join('\n')}\n\nPicked from kevinchau.github.io/dining-hk/`;
+    }
+
+    function showPicksFallback(text) {
+      const overlay = document.createElement('div');
+      overlay.className = 'picks-fallback';
+      overlay.innerHTML = `
+        <div class="picks-fallback-inner">
+          <p class="text-sm text-slate-700 mb-2 font-medium">Auto-copy didn't work — select all and copy manually, then paste into WhatsApp.</p>
+          <textarea readonly></textarea>
+          <div class="mt-3 flex justify-end">
+            <button type="button" class="picks-fallback-close bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm px-4 py-2 rounded-lg">Close</button>
+          </div>
+        </div>`;
+      const ta = overlay.querySelector('textarea');
+      ta.value = text;
+      document.body.appendChild(overlay);
+      ta.focus();
+      ta.select();
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target.classList.contains('picks-fallback-close')) {
+          document.body.removeChild(overlay);
+        }
+      });
+    }
+
+    async function copyPicks() {
+      if (picks.length === 0) {
+        showToast('Pick at least 1 venue first.');
+        return;
+      }
+      const text = formatPicksForClipboard();
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Copied! Paste into WhatsApp.');
+        return;
+      } catch {}
+      // Fallback: temp textarea + execCommand
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch { ok = false; }
+      document.body.removeChild(ta);
+      if (ok) {
+        showToast('Copied! Paste into WhatsApp.');
+      } else {
+        showPicksFallback(text);
+      }
+    }
+
+    function wirePicks() {
+      // Click delegation on body — pick buttons can be inside either main grid or DPD grids.
+      document.body.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-pick]');
+        if (!btn) return;
+        togglePick(btn.dataset.pick);
+      });
+      picksCopyBtn.addEventListener('click', copyPicks);
+      picksClearBtn.addEventListener('click', clearPicks);
+    }
+
+    loadPicks();
     render();
     wireDpdFilter();
+    syncPickButtons();
+    renderBar();
+    wirePicks();
   </script>
 </body>
 </html>
