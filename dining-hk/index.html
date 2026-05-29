@@ -68,64 +68,83 @@
       border-radius: 8px; font-size: 14px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       color: rgb(15 23 42);
     }
+    /* lang toggle pill */
+    #lang-toggle {
+      display: inline-flex; align-items: center; gap: 0;
+      background: rgb(245 245 244);
+      border: 1px solid rgb(231 229 228);
+      border-radius: 999px;
+      padding: 2px;
+      font-size: 13px;
+      line-height: 1;
+    }
+    #lang-toggle button {
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      color: rgb(120 113 108);
+      transition: background-color .15s ease, color .15s ease;
+    }
+    #lang-toggle button:hover { color: rgb(15 23 42); }
+    #lang-toggle button.active {
+      background: rgb(15 23 42);
+      color: white;
+    }
   </style>
 </head>
 <body class="bg-stone-50 text-slate-900 antialiased font-sans">
   <!-- Hero -->
   <header class="max-w-6xl mx-auto px-5 pt-10 pb-6 sm:pt-14 sm:pb-8">
-    <div class="flex items-center gap-3 mb-3">
-      <span class="text-3xl sm:text-4xl" aria-hidden="true">🍽️</span>
-      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">HK Dinner Options</h1>
+    <div class="flex items-start justify-between gap-3 mb-3">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl sm:text-4xl" aria-hidden="true">🍽️</span>
+        <h1 id="hero-title" class="text-2xl sm:text-3xl font-bold tracking-tight">HK Dinner Options</h1>
+      </div>
+      <div id="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="zh">粵</button>
+      </div>
     </div>
-    <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
-      Kevin's shortlist for our group dinner — tap a card to open in Maps, or hit
-      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 Copy name</span>
-      to drop the venue name straight into the group chat.
-    </p>
-    <p class="text-slate-500 text-sm mt-3">
-      19 sit-down picks + 15 dai pai dong alternatives across Hong Kong Island, Kowloon, and the New Territories. Mix of Michelin, neighborhood favorites, crowd-pleasers, and street-stall classics. DPD cards tagged ❄️ Indoor / 🌬️ Outdoor / 🔀 Mixed for HK heat days.
-    </p>
+    <p id="hero-intro" class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"></p>
+    <p id="hero-sub" class="text-slate-500 text-sm mt-3"></p>
   </header>
 
   <!-- Grid -->
   <main class="max-w-6xl mx-auto px-5 pb-12">
+    <h2 id="sitdown-header" class="text-xl sm:text-2xl font-bold tracking-tight mb-4 flex items-center gap-2"></h2>
     <div id="grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
 
     <!-- DPD section -->
     <section class="mt-12 pt-8 border-t border-stone-200">
       <div class="flex items-center gap-3 mb-2">
         <span class="text-2xl sm:text-3xl" aria-hidden="true">🥡</span>
-        <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Dai Pai Dong alternatives — if you'd rather do street-stall</h2>
+        <h2 id="dpd-header" class="text-xl sm:text-2xl font-bold tracking-tight"></h2>
       </div>
-      <p class="text-slate-600 text-sm leading-relaxed max-w-2xl mb-6">
-        Cash-only by default — Ladies' Street Sik Faan, Chan Kun Kee, and ChorLand also take card. Tap a card to open in Maps. Each card is tagged ❄️ Indoor A/C, 🌬️ Outdoor, or 🔀 Mixed for HK heat days — use the filter to narrow down.
-      </p>
+      <p id="dpd-intro" class="text-slate-600 text-sm leading-relaxed max-w-2xl mb-6"></p>
 
       <div id="dpd-filter" class="flex flex-wrap items-center gap-2 mb-6 text-xs">
-        <span class="text-slate-500 font-medium uppercase tracking-wide">Filter:</span>
-        <button type="button" data-filter="all" class="dpd-filter-btn px-3 py-1 rounded-full bg-slate-800 text-white font-medium transition-colors">All</button>
-        <button type="button" data-filter="indoor" class="dpd-filter-btn px-3 py-1 rounded-full bg-sky-100 text-sky-800 hover:bg-sky-200 font-medium transition-colors">❄️ Indoor</button>
-        <button type="button" data-filter="outdoor" class="dpd-filter-btn px-3 py-1 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 font-medium transition-colors">🌬️ Outdoor</button>
-        <button type="button" data-filter="mixed" class="dpd-filter-btn px-3 py-1 rounded-full bg-stone-200 text-stone-700 hover:bg-stone-300 font-medium transition-colors">🔀 Mixed</button>
+        <span id="dpd-filter-label" class="text-slate-500 font-medium uppercase tracking-wide"></span>
+        <button type="button" data-filter="all" class="dpd-filter-btn px-3 py-1 rounded-full bg-slate-800 text-white font-medium transition-colors"></button>
+        <button type="button" data-filter="indoor" class="dpd-filter-btn px-3 py-1 rounded-full bg-sky-100 text-sky-800 hover:bg-sky-200 font-medium transition-colors"></button>
+        <button type="button" data-filter="outdoor" class="dpd-filter-btn px-3 py-1 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 font-medium transition-colors"></button>
+        <button type="button" data-filter="mixed" class="dpd-filter-btn px-3 py-1 rounded-full bg-stone-200 text-stone-700 hover:bg-stone-300 font-medium transition-colors"></button>
       </div>
 
-      <h3 class="text-base font-semibold text-slate-800 mt-2 mb-3">HK Island</h3>
+      <h3 id="area-hki" class="text-base font-semibold text-slate-800 mt-2 mb-3"></h3>
       <div id="dpd-grid-hki" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
 
-      <h3 class="text-base font-semibold text-slate-800 mt-8 mb-3">Kowloon</h3>
+      <h3 id="area-klw" class="text-base font-semibold text-slate-800 mt-8 mb-3"></h3>
       <div id="dpd-grid-klw" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
 
-      <h3 class="text-base font-semibold text-slate-800 mt-8 mb-3">New Territories</h3>
+      <h3 id="area-nt" class="text-base font-semibold text-slate-800 mt-8 mb-3"></h3>
       <div id="dpd-grid-nt" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="max-w-6xl mx-auto px-5 pb-12 pt-4 border-t border-stone-200 mt-4">
-    <p class="text-slate-600 text-sm leading-relaxed">
-      <span class="font-semibold text-slate-800">DPD note:</span> picks are cash-friendly and walk-in unless noted. For groups of 5+, arrive 15 min before opening for outdoor tables.
-    </p>
-    <p class="text-slate-400 text-xs mt-4">Last updated 2026-05-29 · 15 DPD picks · Built for friends, not for SEO · No tracking on this page.</p>
+    <p id="footer-note" class="text-slate-600 text-sm leading-relaxed"></p>
+    <p id="footer-meta" class="text-slate-400 text-xs mt-4"></p>
   </footer>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -136,12 +155,12 @@
     <div class="flex items-center gap-2">
       <button type="button" id="picks-copy"
         class="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm px-3.5 py-2 rounded-lg transition-colors">
-        <span aria-hidden="true">📋</span> Copy picks
+        <span class="picks-copy-label"></span>
       </button>
       <button type="button" id="picks-clear"
         class="inline-flex items-center gap-1.5 bg-slate-700 hover:bg-slate-600 text-white font-medium text-sm px-3 py-2 rounded-lg transition-colors"
         aria-label="Clear all picks">
-        <span aria-hidden="true">✕</span> Clear
+        <span class="picks-clear-label"></span>
       </button>
     </div>
   </div>
@@ -150,6 +169,98 @@
   <div id="picks-bar-spacer" class="h-24" hidden></div>
 
   <script>
+    // ============================================================
+    // LANGUAGE STATE + UI STRINGS
+    // ============================================================
+    const LANG_KEY = 'dining-hk:lang';
+    let currentLang = 'en';
+
+    const UI_STRINGS = {
+      en: {
+        heroTitle: 'HK Dinner Options',
+        heroIntroHtml: 'Kevin\'s shortlist for our group dinner — tap a card to open in Maps, or hit <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 Copy name</span> to drop the venue name straight into the group chat.',
+        heroSub: '19 sit-down picks + 15 dai pai dong alternatives across Hong Kong Island, Kowloon, and the New Territories. Mix of Michelin, neighborhood favorites, crowd-pleasers, and street-stall classics. DPD cards tagged ❄️ Indoor / 🌬️ Outdoor / 🔀 Mixed for HK heat days.',
+        sectionSitdown: '🍽️ Sit-down',
+        sectionDpd: 'Dai Pai Dong alternatives — if you\'d rather do street-stall',
+        dpdIntro: 'Cash-only by default — Ladies\' Street Sik Faan, Chan Kun Kee, and ChorLand also take card. Tap a card to open in Maps. Each card is tagged ❄️ Indoor A/C, 🌬️ Outdoor, or 🔀 Mixed for HK heat days — use the filter to narrow down.',
+        filterLabel: 'Filter:',
+        filterAll: 'All',
+        filterIndoor: '❄️ Indoor',
+        filterOutdoor: '🌬️ Outdoor',
+        filterMixed: '🔀 Mixed',
+        areaHki: 'HK Island',
+        areaKlw: 'Kowloon',
+        areaNt: 'New Territories',
+        seatingIndoor: '❄️ Indoor A/C',
+        seatingOutdoor: '🌬️ Outdoor',
+        seatingMixed: '🔀 Mixed seating',
+        openMaps: '🗺️ Open in Maps',
+        copyName: '💬 Copy name',
+        pickButton: '<span aria-hidden="true">👍</span> Pick',
+        pickedButton: '<span aria-hidden="true">✅</span> Picked',
+        copyPicks: '<span aria-hidden="true">📋</span> Copy picks',
+        clearPicks: '<span aria-hidden="true">✕</span> Clear',
+        picksCount: (n) => `${n} picked`,
+        toastCopied: (name) => `Copied "${name}"`,
+        toastCopyFailed: 'Copy failed — long-press the name',
+        toastPickFirst: 'Pick at least 1 venue first.',
+        toastPicksCopied: 'Copied! Paste into WhatsApp.',
+        pickAtLeastOne: 'Pick at least 1 venue.',
+        fallbackHeader: 'Auto-copy didn\'t work — select all and copy manually, then paste into WhatsApp.',
+        fallbackClose: 'Close',
+        footerNote: '<span class="font-semibold text-slate-800">DPD note:</span> picks are cash-friendly and walk-in unless noted. For groups of 5+, arrive 15 min before opening for outdoor tables.',
+        footerMeta: 'Last updated 2026-05-29 · 15 DPD picks · Built for friends, not for SEO · No tracking on this page.',
+        clipboardHeader: (n) => `My HK dinner picks (${n}):`,
+        clipboardFooter: 'Picked from kevinchau.github.io/dining-hk/',
+      },
+      zh: {
+        heroTitle: '香港晚餐之選',
+        heroIntroHtml: 'Kevin 為我哋聚餐揀嘅心水餐廳 — 撳卡片即可開啟地圖，或者撳 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 複製店名</span> 直接將店名貼入群組。',
+        heroSub: '19間正餐之選 + 15間大排檔之選,遍佈香港島、九龍同新界。包括米芝蓮、街坊名店、大眾化選擇同經典街頭小食。大排檔卡片標有 ❄️ 室內冷氣 / 🌬️ 露天 / 🔀 半露天,啱香港熱天用。',
+        sectionSitdown: '🍽️ 正餐之選',
+        sectionDpd: '大排檔之選 — 想食街頭風味嘅可以揀呢類',
+        dpdIntro: '預設只收現金 — 女人街食飯公司、陳根記、楚撚記都收卡。撳卡片即可開啟地圖。每張卡片標有 ❄️ 室內冷氣、🌬️ 露天或 🔀 半露天,香港熱天可用篩選功能縮窄選擇。',
+        filterLabel: '篩選:',
+        filterAll: '全部',
+        filterIndoor: '❄️ 室內冷氣',
+        filterOutdoor: '🌬️ 露天',
+        filterMixed: '🔀 半露天',
+        areaHki: '🏝️ 香港島',
+        areaKlw: '🌃 九龍',
+        areaNt: '🏞️ 新界',
+        seatingIndoor: '❄️ 室內冷氣',
+        seatingOutdoor: '🌬️ 露天',
+        seatingMixed: '🔀 室內外座位',
+        openMaps: '🗺️ 在地圖開啟',
+        copyName: '💬 複製店名',
+        pickButton: '<span aria-hidden="true">👍</span> 揀',
+        pickedButton: '<span aria-hidden="true">✅</span> 已揀',
+        copyPicks: '<span aria-hidden="true">📋</span> 複製揀選',
+        clearPicks: '<span aria-hidden="true">✕</span> 清除',
+        picksCount: (n) => `已揀 ${n} 間`,
+        toastCopied: (name) => `已複製「${name}」`,
+        toastCopyFailed: '複製失敗 — 請長按店名',
+        toastPickFirst: '請先至少揀一間餐廳。',
+        toastPicksCopied: '已複製!可以貼入 WhatsApp。',
+        pickAtLeastOne: '請至少揀一間餐廳。',
+        fallbackHeader: '自動複製失敗 — 請全選並手動複製,然後貼入 WhatsApp。',
+        fallbackClose: '關閉',
+        footerNote: '<span class="font-semibold text-slate-800">大排檔備註:</span>除非另有註明,否則餐廳一般收現金兼免預約。如5人以上同行,建議開門前15分鐘到場以爭取露天座位。',
+        footerMeta: '最後更新 2026-05-29 · 15間大排檔之選 · 為朋友而設,並非為SEO · 本頁不作任何追蹤。',
+        clipboardHeader: (n) => `我的香港晚餐揀選 (${n}項):`,
+        clipboardFooter: '自 kevinchau.github.io/dining-hk/ 揀選',
+      },
+    };
+
+    function t(key) {
+      const v = UI_STRINGS[currentLang][key];
+      return v !== undefined ? v : UI_STRINGS.en[key];
+    }
+
+    // ============================================================
+    // VENUE DATA — flat English fields. Chinese translations live
+    // in TRANSLATIONS, keyed by venue id.
+    // ============================================================
     const venues = [
       {
         name: "New Punjab Club",
@@ -610,13 +721,13 @@
     async function copyName(name) {
       try {
         await navigator.clipboard.writeText(name);
-        showToast(`Copied "${name}"`);
+        showToast(t('toastCopied')(name));
       } catch (e) {
         // fallback for older / restrictive browsers
         const ta = document.createElement('textarea');
         ta.value = name; document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); showToast(`Copied "${name}"`); }
-        catch { showToast('Copy failed — long-press the name'); }
+        try { document.execCommand('copy'); showToast(t('toastCopied')(name)); }
+        catch { showToast(t('toastCopyFailed')); }
         document.body.removeChild(ta);
       }
     }
@@ -637,27 +748,260 @@
     venues.forEach((v, i) => { v.id = `sit-${slugify(v.name)}-${i}`; });
     dpdVenues.forEach((v, i) => { v.id = `dpd-${slugify(v.name)}-${i}`; });
 
+    // ============================================================
+    // CHINESE TRANSLATIONS (HK 繁體) — keyed by venue id
+    // Translates: cuisine, hood, why, hours, phone (for Chinese
+    // notes like "致電預訂"), address (for things like "只收現金" tail)
+    // Untranslated fields stay flat English on the venue row.
+    // ============================================================
+    const TRANSLATIONS = {
+      // ---------- Sit-down ----------
+      'sit-new-punjab-club-0': {
+        cuisine: '旁遮普菜 · 印度菜',
+        hood: '中環',
+        why: '全球首間獲米芝蓮星級嘅旁遮普餐廳 — 主打坦都爐料理,氣氛熱鬧,裝潢華麗。',
+        hours: '每日 12:00–14:30, 18:00–24:00',
+      },
+      'sit-ippoh-tempura-1': {
+        cuisine: '日本菜 · 天婦羅',
+        hood: '中環 / 蘇豪',
+        why: '大阪天婦羅第五代傳人 — 8個吧檯位 + 一張4人枱,務必預訂。',
+        hours: '一、二、四至日 12:00–15:00, 18:00–23:00 · 三休息',
+      },
+      'sit-ask-for-alonzo-2': {
+        cuisine: '現代意式小酒館',
+        hood: '灣仔 · 星街',
+        why: '星街上輕鬆嘅街坊意菜 — 意粉、早午餐氛圍,從太古廣場行得到。',
+        hours: '一至五 11:30–22:00 · 六至日 10:00–22:00',
+      },
+      'sit-golden-leaf-3': {
+        cuisine: '粵菜',
+        hood: '金鐘 · 港麗酒店',
+        why: '港麗酒店嘅粵菜廳 — 北京填鴨、點心,經典宴會感覺。住太古廣場最就腳嘅選擇。',
+        hours: '一至六 11:30–15:00, 18:00–23:00 · 日只供晚市 18:00–23:00',
+      },
+      'sit-brasserie-on-the-eighth-4': {
+        cuisine: '法式地中海菜',
+        hood: '金鐘 · 港麗酒店',
+        why: '港麗酒店內嘅法式歐陸小酒館 — 有酒單,輕鬆優雅,同樣就腳。',
+        hours: '每日供應晚市(請致電確認)(出發前請查詢)',
+      },
+      'sit-man-ho-5': {
+        cuisine: '粵菜 · 點心',
+        hood: '金鐘 · JW萬豪酒店',
+        why: 'JW萬豪酒店嘅米芝蓮粵菜 — 月門吊燈廳,精緻點心同燒味。',
+        hours: '每日供應午市同晚市',
+      },
+      'sit-whey-6': {
+        cuisine: '現代歐洲菜 · 新加坡風',
+        hood: '中環 · The Wellington',
+        why: '一星米芝蓮 — Barry Quek 主廚嘅7道菜 tasting,將新加坡風味融入現代歐陸菜。',
+        hours: '每晚供應晚市(請致電確認)(出發前請查詢)',
+      },
+      'sit-censu-7': {
+        cuisine: '當代日本菜',
+        hood: '中環 · 歌賦街',
+        why: '主廚 Shun Sato 帶英澳風嘅當代日本菜 — 翠玉瓜花天婦羅、味噌銀鱈魚、蟹肉烏冬。',
+        hours: '請致電確認(出發前請查詢)',
+      },
+      'sit-moo-lah-8': {
+        cuisine: '韓國菜 · 韓牛 + 港式茶記',
+        hood: '中環 · 荷李活道',
+        why: '首爾 Born & Bred 團隊出品 — 頂級韓牛混搭重新演繹嘅茶餐廳經典。',
+        hours: '二至日 12:00–15:00, 18:00–22:00 · 一休息',
+      },
+      'sit-leela-9': {
+        cuisine: '現代印度菜',
+        hood: '銅鑼灣 · 利園三期',
+        why: '主廚 Manav Tuli(前 Rosewood Chaat)做嘅玩味現代印度菜 — chaat 籃、羊腿、骨髓 biryani。',
+        hours: '一 17:30–22:45 · 二至日 12:00–15:30, 17:30–22:45',
+      },
+      'sit-trattoria-felino-10': {
+        cuisine: '意大利菜 · 拿坡里風',
+        hood: '灣仔 · 船街',
+        why: '灣仔靜街上嘅現代拿坡里小酒館 — 柴火焗爐,南意大利舒適風味。',
+        hours: '每日晚市 18:00–23:00 · 五至日午市 12:00–14:00',
+      },
+      'sit-22-ships-11': {
+        cuisine: '西班牙菜 · 現代 Tapas',
+        hood: '灣仔 · 船街',
+        why: 'Jason Atherton 嘅 tapas 名店 — 賽哥維亞乳豬、海膽多士、招牌火腿芝士松露多士。只接受 walk-in。',
+        hours: '一至六 12:00–15:00, 18:00–23:00 · 日 12:00–14:30, 18:00–23:00',
+      },
+      'sit-racines-12': {
+        cuisine: '南法菜 · 高級餐飲',
+        hood: '上環 · 差館上街',
+        why: '一星米芝蓮 · 兩位 owner-chef 重新詮釋南法傳統食譜 — 私密、時令。',
+        hours: '二至四 18:00–23:00 · 五至六 12:00–15:00, 18:00–23:00 · 日、一休息',
+      },
+      'sit-little-napoli-pizzeria-13': {
+        cuisine: '意大利菜 · 拿坡里薄餅',
+        hood: '灣仔 · 大王東街',
+        why: '正宗拿坡里薄餅 — 只接受 walk-in,枱數不多,要早到。Pizza 之選。',
+        hours: '二 18:00–22:00 · 三至日 12:00–15:00, 18:00 起 · 一休息',
+      },
+      'sit-hansik-goo-14': {
+        cuisine: '現代韓國菜 · Tasting Menu',
+        hood: '中環 · The Wellington',
+        why: '一星米芝蓮 · Mingoo Kang 團隊嘅10道菜時令韓國菜 — 鮑魚餃、人參雞 roulade。',
+        hours: '二至日 12:00–15:00,供應晚市 · 一休息',
+      },
+      'sit-fireside-15': {
+        cuisine: '明火扒房',
+        hood: '中環 · H Code',
+        why: '明火燒烤(柴火 + 備長炭)— El Capricho 同 Rubia Gallega 牛肉、骨入韓牛、carabinero 蝦 flambadou。入選 World\'s 101 Best Steak 榜單。',
+        hours: '一至四 12:00–15:00, 18:00–22:00 · 五至六至 23:00 · 日休息',
+      },
+      'sit-yan-toh-heen-lai-ching-heen-16': {
+        cuisine: '粵菜 · 高級餐飲',
+        hood: '尖沙咀 · 香港洲際酒店',
+        why: '米芝蓮星級傳統粵菜兼擁海港景 — 玉器擺設、精緻經典菜式。(近期改名為麗晶軒。)',
+        hours: '一至六 12:00–14:30, 18:00–22:00 · 日 11:30–15:00, 18:00–22:00',
+      },
+      'sit-ho-lee-fook-17': {
+        cuisine: '現代粵菜',
+        hood: '蘇豪 · 伊利近街',
+        why: '熱鬧好玩、霓虹同招財貓主題嘅現代粵菜 — 和牛牛肋骨、蝦多士、三黃雞。鑊氣做得正。',
+        hours: '日至三 18:00–22:30 · 四至六 18:00–23:30',
+      },
+      'sit-grand-majestic-sichuan-18': {
+        cuisine: '川菜',
+        hood: '中環 · 歷山大廈',
+        why: 'Black Sheep 旗下 1960年代夜總會風嘅川菜廳 — 與扶霞合作開發食譜。紅油抄手、擔擔麵、棒棒雞、水煮牛。',
+        hours: '每日午市 12:00–14:30 · 晚市:日至二 18:00–22:00,三至四 18:00–22:30,五至六 18:00–22:45',
+      },
+
+      // ---------- DPD ----------
+      'dpd-sing-kee-0': {
+        cuisine: '粵菜 · 鑊氣小炒',
+        hood: '中環 · 士丹利街',
+        why: '中環最後一檔露天大排檔 — 士丹利街上嘅膠櫈遮陽傘。椒鹽鮮魷、炒蟹、煲仔茄子。人均約 HK$80。',
+        hours: '每日 11:00–15:00, 17:00–23:00',
+      },
+      'dpd-keung-kee-wan-chai-1': {
+        cuisine: '糯米飯 · 煎腸粉',
+        hood: '灣仔 · 駱克道',
+        why: '以生炒糯米飯同煎腸粉聞名。輕鬆地道,街坊客為主。同深水埗強記係兩間舖。',
+        hours: '二至日 12:00–22:00 · 一休息',
+      },
+      'dpd-hip-shing-dai-pai-dong-2': {
+        cuisine: '粵菜 · 鑊氣小炒',
+        hood: '炮台山 · 電氣道',
+        why: '隱世家庭式大排檔。長時間全日營業,街坊客為主,遊客少。',
+        hours: '每日 11:00–23:00',
+      },
+      'dpd-oi-man-sang-3': {
+        cuisine: '粵菜 · 鑊氣海鮮',
+        hood: '深水埗',
+        why: '1956年至今 — 全港最老牌大排檔之一。室內冷氣,街邊鑊氣猛火。椒鹽鮮魷、蒜蓉蒸蟶子、鹹蛋黃蝦。每道菜夠2-3人食,啱開枱。電子排隊,繁忙時段等30-60分鐘。',
+        hours: '每日 16:30–24:00(最後落單 23:00)',
+      },
+      'dpd-dai-lee-dai-pai-dong-4': {
+        cuisine: '粵菜 · 家常菜',
+        hood: '深水埗 · 北河街',
+        why: '50年歷史,家庭經營。位於北河街街市熟食中心樓上。椒鹽炸乳鴿、鹹魚肉碎茄子煲、冬菇雞煲。可開大鍋打邊爐。',
+        hours: '供應晚市(請致電確認)',
+      },
+      'dpd-ladies-street-sik-faan-5': {
+        cuisine: '新派大排檔',
+        hood: '旺角 · 通菜街',
+        why: '新派大排檔 — 霓虹招牌、鐵閘裝潢。蝦多士、蜜糖椒鹽牛仔粒、咕嚕肉。室內冷氣、接受預訂,對混合語言團體較方便。每枱限90分鐘。',
+        hours: '每日 18:00–24:00',
+      },
+      'dpd-chan-kun-kee-6': {
+        cuisine: '新派粵菜大排檔',
+        hood: '沙田石門 · 京瑞廣場二期',
+        why: '40年老字號。2018年遷入冷氣店面,設12個爐頭、90張枱 — 容納人數最多。燒乳鴿、炸蠔餅、椒鹽鮮魷、手撕芥末雞、冬蔭蜆。由金鐘搭東鐵約30分鐘到。營業至凌晨1:30。',
+        hours: '每日 17:00–01:30',
+      },
+      'dpd-kui-kee-seafood-7': {
+        cuisine: '粵菜 · 避風塘海鮮',
+        hood: '灣仔 · 寶靈頓道',
+        why: '寶靈頓道夜宵名店 — 避風塘炒蟹、椒鹽瀨尿蝦、脆皮蒜香雞、炭燒乳鴿。營業至凌晨3點,由銅鑼灣港鐵站行得到。',
+        hours: '每日 17:00–03:00',
+      },
+      'dpd-dai-pai-dong-siu-chow-8': {
+        cuisine: '粵菜 · 鑊氣小炒 + 煲仔',
+        hood: '銅鑼灣 · 駱克道',
+        why: '室內冷氣大排檔,夠位開大枱 — 經典鑊氣小炒加滾燙煲仔飯。蜜糖牛仔粒、水煮魚、煎釀三寶。比起帆布櫈嘅露天檔舖更易安頓。',
+        hours: '每日 17:30–22:30',
+      },
+      'dpd-daisy-kitchen-9': {
+        cuisine: '粵菜 · 熟食中心',
+        hood: '西營盤 · 正街街市',
+        why: '正街熟食中心內嘅迷你冷氣檔(約12張枱),營業至凌晨2點。蠔餅、鹹蛋黃魷魚、肉碎茄子。由上環或西營盤行過去都方便。',
+        hours: '每日營業至約 02:00(晚市開始時間請致電確認)',
+      },
+      'dpd-chorland-cookfood-stall-10': {
+        cuisine: '新派粵菜大排檔',
+        hood: '土瓜灣 · 寶光大廈',
+        why: 'Tatler 推薦嘅新派大排檔 — 避風塘魷魚、松露豬肉蓮藕餅、鹹蛋黃燕麥蝦球。透過 inline.app 預訂 — 6:30 PM 前要入座,否則排隊。如果想創新但仍保留大排檔風味,此乃首選。',
+        hours: '供應晚市(請透過 inline.app 預訂,18:30 前到場)',
+      },
+      'dpd-wing-fat-seafood-11': {
+        cuisine: '粵菜 · 海鮮 + 煲仔',
+        hood: '佐敦 · 吳松街',
+        why: '位於吳松街熟食小販市場(2021年重開,圓拱屋頂)嘅人氣檔。油鹽水浸蜆、滷水九棍魚、辣酒煮花螺、豉椒炒蜆。營業至凌晨1點。',
+        hours: '每日 17:00–01:00',
+      },
+      'dpd-temple-spice-crabs-12': {
+        cuisine: '粵菜 · 香辣蟹 + 海鮮',
+        hood: '佐敦 · 廟街',
+        why: '招牌香辣蟹(活水蟹即叫即劏,加辣椒、蒜頭、五香炒)。典型廟街夜市大排檔 — 熱鬧、快、講求轉枱率。亦有水缸揀嘅小龍蝦同龍蝦。',
+        hours: '供應晚市 / 宵夜(請致電確認)(出發前請查詢)',
+      },
+      'dpd-haiphong-road-cooked-food-bazaar-13': {
+        cuisine: '多檔 · 牛腩麵、豬扒、海南雞',
+        hood: '尖沙咀 · 海防道天橋底',
+        why: '整個熟食市場之選 — 2020年翻新嘅9個檔位,藏喺天橋底。合香園沙嗲牛肉麵(40年歷史)、華香園豬扒、文記海南雞飯、得發牛丸。可跨檔點菜共枱食。最就腳尖沙咀酒店嘅熟食中心體驗。',
+        hours: '各檔不同 — 大部分供應晚市(請致電個別檔位確認)(出發前請查詢)',
+      },
+      'dpd-tai-yuen-dai-pai-dong-14': {
+        cuisine: '粵菜 · 燒乳鴿 + 海鮮',
+        hood: '火炭 · 熟食市場(東)',
+        why: '燒乳鴿(細隻、年幼鴿 — 皮更脆)+ 椒鹽豆腐 + 蟶子(任揀煮法)。冷氣熟食市場場地,營業至凌晨3點。真正出走新界嘅選擇 — 由旺角東搭東鐵4個站到火炭。',
+        hours: '每日 18:00–03:00',
+      },
+    };
+
+    // Look up a translated field; falls back to the venue's English field if missing.
+    function tv(v, field) {
+      if (currentLang === 'en') return v[field];
+      const tr = TRANSLATIONS[v.id];
+      if (tr && tr[field]) return tr[field];
+      return v[field];
+    }
+
     // Lookup map for picks → venue row.
     const venueById = new Map();
     venues.forEach(v => venueById.set(v.id, { ...v, _kind: 'sit' }));
     dpdVenues.forEach(v => venueById.set(v.id, { ...v, _kind: 'dpd' }));
 
-    const SEATING_BADGE = {
-      indoor:  { label: '❄️ Indoor A/C',   classes: 'bg-sky-100 text-sky-800' },
-      outdoor: { label: '🌬️ Outdoor',      classes: 'bg-amber-100 text-amber-800' },
-      mixed:   { label: '🔀 Mixed seating', classes: 'bg-stone-200 text-stone-700' },
+    function seatingBadgeLabel(seating) {
+      if (seating === 'indoor') return t('seatingIndoor');
+      if (seating === 'outdoor') return t('seatingOutdoor');
+      if (seating === 'mixed') return t('seatingMixed');
+      return '';
+    }
+    const SEATING_BADGE_CLASSES = {
+      indoor:  'bg-sky-100 text-sky-800',
+      outdoor: 'bg-amber-100 text-amber-800',
+      mixed:   'bg-stone-200 text-stone-700',
     };
 
     function cardHtml(v) {
       const zh = v.zh ? `<p class="text-sm text-slate-500 mt-0.5">${escapeHtml(v.zh)}</p>` : '';
       const phone = v.phone ? `<span class="inline-flex items-center gap-1"><span aria-hidden="true">☎</span><a href="tel:${escapeHtml(v.phone.replace(/\s+/g,''))}" class="hover:text-amber-700 underline-offset-2 hover:underline">${escapeHtml(v.phone)}</a></span>` : '';
-      const hours = v.hours ? `<p class="text-xs text-slate-500 mt-1 leading-snug"><span aria-hidden="true">🕒</span> ${escapeHtml(v.hours)}</p>` : '';
-      const seatingMeta = v.seating && SEATING_BADGE[v.seating];
-      const seatingBadge = seatingMeta
-        ? `<span class="text-xs px-2 py-0.5 rounded-full ${seatingMeta.classes} font-medium">${seatingMeta.label}</span>`
+      const hoursStr = tv(v, 'hours');
+      const hours = hoursStr ? `<p class="text-xs text-slate-500 mt-1 leading-snug"><span aria-hidden="true">🕒</span> ${escapeHtml(hoursStr)}</p>` : '';
+      const seatingClasses = v.seating && SEATING_BADGE_CLASSES[v.seating];
+      const seatingBadge = seatingClasses
+        ? `<span class="text-xs px-2 py-0.5 rounded-full ${seatingClasses} font-medium">${escapeHtml(seatingBadgeLabel(v.seating))}</span>`
         : '';
       const dataSeating = v.seating ? ` data-seating="${escapeHtml(v.seating)}"` : '';
       const venueId = escapeHtml(v.id);
+      // Copy-name button copies Chinese name when in zh mode and a zh name exists; else English.
+      const copyTarget = (currentLang === 'zh' && v.zh) ? v.zh : v.name;
       return `
         <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm" data-venue-id="${venueId}"${dataSeating}>
           <header>
@@ -666,13 +1010,13 @@
           </header>
 
           <div class="flex flex-wrap gap-1.5">
-            <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-medium">${escapeHtml(v.cuisine)}</span>
-            <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 font-medium">${escapeHtml(v.hood)}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-medium">${escapeHtml(tv(v, 'cuisine'))}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 font-medium">${escapeHtml(tv(v, 'hood'))}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-medium">${escapeHtml(v.price)}</span>
             ${seatingBadge}
           </div>
 
-          <p class="text-sm text-slate-700 italic leading-snug">${escapeHtml(v.why)}</p>
+          <p class="text-sm text-slate-700 italic leading-snug">${escapeHtml(tv(v, 'why'))}</p>
 
           <div class="text-xs text-slate-600 leading-relaxed flex flex-col gap-1 mt-1">
             <p><span aria-hidden="true">📍</span> ${escapeHtml(v.address)}</p>
@@ -683,15 +1027,15 @@
           <div class="mt-auto pt-2 flex flex-col sm:flex-row gap-2">
             <a href="${escapeHtml(v.maps)}" target="_blank" rel="noopener noreferrer"
               class="flex-1 inline-flex items-center justify-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
-              <span aria-hidden="true">🗺️</span> Open in Maps
+              ${t('openMaps')}
             </a>
-            <button type="button" data-copy="${escapeHtml(v.name)}"
+            <button type="button" data-copy="${escapeHtml(copyTarget)}"
               class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
-              <span aria-hidden="true">💬</span> Copy name
+              ${t('copyName')}
             </button>
             <button type="button" data-pick="${venueId}" aria-pressed="false"
               class="pick-btn flex-1 inline-flex items-center justify-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
-              <span class="pick-label"><span aria-hidden="true">👍</span> Pick</span>
+              <span class="pick-label">${t('pickButton')}</span>
             </button>
           </div>
         </article>
@@ -703,6 +1047,41 @@
         const btn = e.target.closest('[data-copy]');
         if (btn) copyName(btn.getAttribute('data-copy'));
       });
+    }
+
+    function renderStatic() {
+      // Hero
+      document.getElementById('hero-title').textContent = t('heroTitle');
+      document.getElementById('hero-intro').innerHTML = t('heroIntroHtml');
+      document.getElementById('hero-sub').textContent = t('heroSub');
+
+      // Section headers
+      document.getElementById('sitdown-header').textContent = t('sectionSitdown');
+      document.getElementById('dpd-header').textContent = t('sectionDpd');
+      document.getElementById('dpd-intro').textContent = t('dpdIntro');
+
+      // Filter pills
+      document.getElementById('dpd-filter-label').textContent = t('filterLabel');
+      document.querySelector('.dpd-filter-btn[data-filter="all"]').textContent = t('filterAll');
+      document.querySelector('.dpd-filter-btn[data-filter="indoor"]').textContent = t('filterIndoor');
+      document.querySelector('.dpd-filter-btn[data-filter="outdoor"]').textContent = t('filterOutdoor');
+      document.querySelector('.dpd-filter-btn[data-filter="mixed"]').textContent = t('filterMixed');
+
+      // Area sub-headers
+      document.getElementById('area-hki').textContent = t('areaHki');
+      document.getElementById('area-klw').textContent = t('areaKlw');
+      document.getElementById('area-nt').textContent = t('areaNt');
+
+      // Footer
+      document.getElementById('footer-note').innerHTML = t('footerNote');
+      document.getElementById('footer-meta').textContent = t('footerMeta');
+
+      // Picks bar buttons
+      document.querySelector('.picks-copy-label').innerHTML = t('copyPicks');
+      document.querySelector('.picks-clear-label').innerHTML = t('clearPicks');
+
+      // <html lang> attribute for a11y / search engines
+      document.documentElement.lang = currentLang === 'zh' ? 'zh-HK' : 'en';
     }
 
     function render() {
@@ -733,13 +1112,15 @@
       });
     }
 
+    let currentFilter = 'all';
     function wireDpdFilter() {
       const bar = document.getElementById('dpd-filter');
       if (!bar) return;
       bar.addEventListener('click', (e) => {
         const btn = e.target.closest('.dpd-filter-btn');
         if (!btn) return;
-        applyDpdFilter(btn.dataset.filter);
+        currentFilter = btn.dataset.filter;
+        applyDpdFilter(currentFilter);
       });
     }
 
@@ -782,20 +1163,18 @@
         btn.classList.toggle('text-white', on);
         btn.classList.toggle('border-emerald-700', on);
         const label = btn.querySelector('.pick-label');
-        if (label) label.innerHTML = on
-          ? '<span aria-hidden="true">✅</span> Picked'
-          : '<span aria-hidden="true">👍</span> Pick';
+        if (label) label.innerHTML = on ? t('pickedButton') : t('pickButton');
       });
     }
 
     function renderBar() {
       const n = picks.length;
-      picksCountEl.textContent = `${n} picked`;
+      picksCountEl.textContent = t('picksCount')(n);
       const visible = n > 0;
       picksBar.hidden = !visible;
       picksBarSpacer.hidden = !visible;
       picksCopyBtn.disabled = n === 0;
-      picksCopyBtn.title = n === 0 ? 'Pick at least 1 venue.' : '';
+      picksCopyBtn.title = n === 0 ? t('pickAtLeastOne') : '';
     }
 
     function togglePick(id) {
@@ -819,11 +1198,15 @@
       const lines = picks.map(id => {
         const v = venueById.get(id);
         if (!v) return null;
-        const cuisineParens = v._kind === 'dpd' && v.cuisine ? ` (${v.cuisine})` : '';
-        const hood = v.hood || '';
-        return `• ${v.name}${cuisineParens} — ${hood} — ${v.maps}`;
+        // Use translated cuisine + hood for the bullet when in zh mode.
+        const cuisineStr = tv(v, 'cuisine');
+        const hoodStr = tv(v, 'hood');
+        const cuisineParens = v._kind === 'dpd' && cuisineStr ? ` (${cuisineStr})` : '';
+        // Use Chinese venue name when in zh mode and a zh name exists, else English.
+        const displayName = (currentLang === 'zh' && v.zh) ? `${v.name} ${v.zh}` : v.name;
+        return `• ${displayName}${cuisineParens} — ${hoodStr} — ${v.maps}`;
       }).filter(Boolean);
-      return `My HK dinner picks (${n}):\n\n${lines.join('\n')}\n\nPicked from kevinchau.github.io/dining-hk/`;
+      return `${t('clipboardHeader')(n)}\n\n${lines.join('\n')}\n\n${t('clipboardFooter')}`;
     }
 
     function showPicksFallback(text) {
@@ -831,10 +1214,10 @@
       overlay.className = 'picks-fallback';
       overlay.innerHTML = `
         <div class="picks-fallback-inner">
-          <p class="text-sm text-slate-700 mb-2 font-medium">Auto-copy didn't work — select all and copy manually, then paste into WhatsApp.</p>
+          <p class="text-sm text-slate-700 mb-2 font-medium">${escapeHtml(t('fallbackHeader'))}</p>
           <textarea readonly></textarea>
           <div class="mt-3 flex justify-end">
-            <button type="button" class="picks-fallback-close bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm px-4 py-2 rounded-lg">Close</button>
+            <button type="button" class="picks-fallback-close bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm px-4 py-2 rounded-lg">${escapeHtml(t('fallbackClose'))}</button>
           </div>
         </div>`;
       const ta = overlay.querySelector('textarea');
@@ -851,13 +1234,13 @@
 
     async function copyPicks() {
       if (picks.length === 0) {
-        showToast('Pick at least 1 venue first.');
+        showToast(t('toastPickFirst'));
         return;
       }
       const text = formatPicksForClipboard();
       try {
         await navigator.clipboard.writeText(text);
-        showToast('Copied! Paste into WhatsApp.');
+        showToast(t('toastPicksCopied'));
         return;
       } catch {}
       // Fallback: temp textarea + execCommand
@@ -870,7 +1253,7 @@
       try { ok = document.execCommand('copy'); } catch { ok = false; }
       document.body.removeChild(ta);
       if (ok) {
-        showToast('Copied! Paste into WhatsApp.');
+        showToast(t('toastPicksCopied'));
       } else {
         showPicksFallback(text);
       }
@@ -887,12 +1270,61 @@
       picksClearBtn.addEventListener('click', clearPicks);
     }
 
+    // ============================================================
+    // LANG TOGGLE
+    // ============================================================
+    function loadLang() {
+      try {
+        const saved = localStorage.getItem(LANG_KEY);
+        if (saved === 'en' || saved === 'zh') currentLang = saved;
+      } catch {}
+    }
+
+    function persistLang() {
+      try { localStorage.setItem(LANG_KEY, currentLang); } catch {}
+    }
+
+    function syncLangToggle() {
+      document.querySelectorAll('#lang-toggle button[data-lang]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === currentLang);
+      });
+    }
+
+    function setLang(lang) {
+      if (lang !== 'en' && lang !== 'zh') return;
+      if (lang === currentLang) return;
+      currentLang = lang;
+      persistLang();
+      syncLangToggle();
+      renderStatic();
+      render();
+      syncPickButtons();
+      renderBar();
+      // Re-apply current DPD filter (re-render wipes the .hidden classes).
+      applyDpdFilter(currentFilter);
+    }
+
+    function wireLangToggle() {
+      document.getElementById('lang-toggle').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-lang]');
+        if (!btn) return;
+        setLang(btn.dataset.lang);
+      });
+    }
+
+    // ============================================================
+    // BOOT
+    // ============================================================
+    loadLang();
+    syncLangToggle();
+    renderStatic();
     loadPicks();
     render();
     wireDpdFilter();
     syncPickButtons();
     renderBar();
     wirePicks();
+    wireLangToggle();
   </script>
 </body>
 </html>
