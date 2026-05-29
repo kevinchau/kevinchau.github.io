@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fef3c7">
+  <meta name="description" content="Kevin's shortlist of Hong Kong dinner picks for our group meal — 18 sit-down options across Central, Wan Chai, Soho, and Kowloon.">
+  <title>HK Dinner Options — Kevin's shortlist</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%BD%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* subtle card lift on hover (desktop only) */
+    @media (hover: hover) {
+      .card { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+      .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px -10px rgba(15,23,42,.15); border-color: rgb(245 158 11 / .55); }
+    }
+    /* focus ring honors keyboard-only */
+    :focus-visible { outline: 3px solid rgb(245 158 11 / .7); outline-offset: 2px; border-radius: 6px; }
+    /* tiny "copied!" toast */
+    .toast {
+      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+      background: rgb(15 23 42); color: white; padding: 10px 18px; border-radius: 999px;
+      font-size: 14px; font-weight: 500; box-shadow: 0 10px 30px -8px rgba(0,0,0,.4);
+      opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+      z-index: 50;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+  </style>
+</head>
+<body class="bg-stone-50 text-slate-900 antialiased font-sans">
+  <!-- Hero -->
+  <header class="max-w-6xl mx-auto px-5 pt-10 pb-6 sm:pt-14 sm:pb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="text-3xl sm:text-4xl" aria-hidden="true">🍽️</span>
+      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">HK Dinner Options</h1>
+    </div>
+    <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
+      Kevin's shortlist for our group dinner — tap a card to open in Maps, or hit
+      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 Copy name</span>
+      to drop the venue name straight into the group chat.
+    </p>
+    <p class="text-slate-500 text-sm mt-3">
+      18 sit-down picks across Hong Kong Island + Kowloon. Mix of Michelin, neighborhood favorites, and crowd-pleasers.
+    </p>
+  </header>
+
+  <!-- Grid -->
+  <main class="max-w-6xl mx-auto px-5 pb-12">
+    <div id="grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="max-w-6xl mx-auto px-5 pb-12 pt-4 border-t border-stone-200 mt-4">
+    <p class="text-slate-600 text-sm leading-relaxed">
+      <span class="font-semibold text-slate-800">Side note:</span> Kevin's also open to any
+      <span class="italic">dai pai dong</span> if you'd rather do a street-stall vibe — let him know and he'll scout one near the chosen area.
+    </p>
+    <p class="text-slate-400 text-xs mt-4">Last updated 2026-05-29 · Built for friends, not for SEO · No tracking on this page.</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const venues = [
+      {
+        name: "New Punjab Club",
+        zh: "",
+        cuisine: "Punjabi / Indian",
+        hood: "Central",
+        why: "World's first Michelin-starred Punjabi restaurant — tandoor-driven, lively, gorgeous room.",
+        address: "G/F, World Wide Commercial Building, 34 Wyndham Street, Central",
+        price: "$$$",
+        hours: "Daily 12:00–14:30, 18:00–24:00",
+        phone: "+852 2368 1223",
+        maps: "https://maps.app.goo.gl/MtvaPjHuokQ8b4d27"
+      },
+      {
+        name: "Ippoh Tempura",
+        zh: "一宝",
+        cuisine: "Japanese · Tempura",
+        hood: "Central / Soho",
+        why: "5th-gen Osaka tempura specialist — 8 counter seats + one table of 4. Book ahead.",
+        address: "G/F, 39 Aberdeen Street, Soho, Central",
+        price: "$$$$",
+        hours: "Mon–Tue & Thu–Sun 12:00–15:00, 18:00–23:00 · Wed closed",
+        phone: "+852 2468 0641",
+        maps: "https://maps.app.goo.gl/RxEn8RYFX3PTMnq2A"
+      },
+      {
+        name: "Ask for Alonzo",
+        zh: "",
+        cuisine: "Modern Italian Trattoria",
+        hood: "Wan Chai · Star Street",
+        why: "Easy-going neighborhood Italian on Star Street — pasta, brunch energy, walkable from Pacific Place.",
+        address: "8 Star Street, Wan Chai",
+        price: "$$",
+        hours: "Mon–Fri 11:30–22:00 · Sat–Sun 10:00–22:00",
+        phone: "+852 6500 8405",
+        maps: "https://maps.app.goo.gl/QiLeVP78rK8BRbmQ7"
+      },
+      {
+        name: "Golden Leaf",
+        zh: "金葉庭",
+        cuisine: "Cantonese",
+        hood: "Admiralty · Conrad HK",
+        why: "Conrad's in-house Cantonese — Peking duck, dim sum, classic banquet feel. Closest pick if you're at Pacific Place.",
+        address: "Lower Lobby, Conrad Hong Kong, Pacific Place, 88 Queensway, Admiralty",
+        price: "$$$",
+        hours: "Mon–Sat 11:30–15:00, 18:00–23:00 · Sun dinner only 18:00–23:00",
+        phone: "+852 2822 5777",
+        maps: "https://maps.app.goo.gl/c8vLWPBTukauARU49"
+      },
+      {
+        name: "Brasserie on the Eighth",
+        zh: "",
+        cuisine: "French-Mediterranean",
+        hood: "Admiralty · Conrad HK",
+        why: "French-continental brasserie inside Conrad — wine list, casual-elegant, also right next door.",
+        address: "8/F, Conrad Hong Kong, Pacific Place, 88 Queensway, Admiralty",
+        price: "$$$",
+        hours: "Daily dinner service (call to confirm) (verify before going)",
+        phone: "",
+        maps: "https://maps.app.goo.gl/aXtqUswGcJSvhKP9A"
+      },
+      {
+        name: "Man Ho",
+        zh: "萬豪殿",
+        cuisine: "Cantonese · Dim Sum",
+        hood: "Admiralty · JW Marriott",
+        why: "Michelin-starred Cantonese at JW Marriott — chandeliered moon-gate room, polished dim sum + bbq.",
+        address: "3/F, JW Marriott Hotel, Pacific Place, 88 Queensway, Admiralty",
+        price: "$$$",
+        hours: "Daily lunch + dinner",
+        phone: "+852 2810 8366",
+        maps: "https://maps.app.goo.gl/Bc66GCG9BGJHGJK68"
+      },
+      {
+        name: "Whey",
+        zh: "",
+        cuisine: "Modern European · Singaporean",
+        hood: "Central · The Wellington",
+        why: "1⭐ Michelin — chef Barry Quek's 7-course tasting weaving Singaporean flavor into modern Euro.",
+        address: "UG/F, The Wellington, 198 Wellington Street, Central",
+        price: "$$$$",
+        hours: "Dinner service nightly (call to confirm) (verify before going)",
+        phone: "+852 2693 3198",
+        maps: "https://maps.app.goo.gl/94yQU28fjZmw4HHv9"
+      },
+      {
+        name: "CENSU",
+        zh: "",
+        cuisine: "Contemporary Japanese",
+        hood: "Central · Gough Street",
+        why: "Chef Shun Sato's UK/Aus-tinged contemporary Japanese — zucchini-flower tempura, miso black cod, crab udon.",
+        address: "G/F, 28-30 Gough Street, Central",
+        price: "$$$",
+        hours: "Call to confirm (verify before going)",
+        phone: "+852 2997 7009",
+        maps: "https://maps.app.goo.gl/cN99oWi5nTmWZvZC9"
+      },
+      {
+        name: "Moo-lah",
+        zh: "",
+        cuisine: "Korean · Hanwoo Beef + HK Diner",
+        hood: "Central · Hollywood Road",
+        why: "From the Seoul-based Born & Bred team — premium Hanwoo beef wrapped into reinvented cha chaan teng classics.",
+        address: "G/F, 66 Hollywood Road, Central",
+        price: "$$$",
+        hours: "Tue–Sun 12:00–15:00, 18:00–22:00 · Mon closed",
+        phone: "",
+        maps: "https://maps.app.goo.gl/tVZs4q1Mq5Mcu2qs6"
+      },
+      {
+        name: "Leela",
+        zh: "",
+        cuisine: "Modern Indian",
+        hood: "Causeway Bay · Lee Garden Three",
+        why: "Chef Manav Tuli (ex-Chaat at Rosewood) doing playful, modern Indian — chaat baskets, lamb shank, bone-marrow biryani.",
+        address: "Shop 301-310, Lee Garden Three, 1 Sunning Road, Causeway Bay",
+        price: "$$$",
+        hours: "Mon 17:30–22:45 · Tue–Sun 12:00–15:30, 17:30–22:45",
+        phone: "+852 2882 5316",
+        maps: "https://maps.app.goo.gl/sTg5QdAwVLPbqVdz8"
+      },
+      {
+        name: "Trattoria Felino",
+        zh: "",
+        cuisine: "Italian · Neapolitan",
+        hood: "Wan Chai · Ship Street",
+        why: "Modern Neapolitan trattoria on a quiet Wan Chai backstreet — wood-burning oven, southern Italian comfort.",
+        address: "Shop 3 & 4, G/F, Pao Yip Building, 1-7 Ship Street, Wan Chai",
+        price: "$$",
+        hours: "Dinner daily 18:00–23:00 · Lunch Fri–Sun 12:00–14:00",
+        phone: "+852 5697 4477",
+        maps: "https://maps.app.goo.gl/TmEuf6J3SugDGzu86"
+      },
+      {
+        name: "22 Ships",
+        zh: "",
+        cuisine: "Spanish · Modern Tapas",
+        hood: "Wan Chai · Ship Street",
+        why: "Jason Atherton tapas spot — Segovian suckling pig, uni toast, that famous jamón-manchego-truffle toastie. Walk-in only.",
+        address: "22 Ship Street, Wan Chai",
+        price: "$$$",
+        hours: "Mon–Sat 12:00–15:00, 18:00–23:00 · Sun 12:00–14:30, 18:00–23:00",
+        phone: "+852 2555 0722",
+        maps: "https://maps.app.goo.gl/eqs32kbkj6LJBcRQA"
+      },
+      {
+        name: "Racines",
+        zh: "",
+        cuisine: "Southern French · Fine Dining",
+        hood: "Sheung Wan · Upper Station Street",
+        why: "1⭐ Michelin · two owner-chefs revisiting southern French heirloom recipes — intimate, seasonal.",
+        address: "22 Upper Station Street, Sheung Wan",
+        price: "$$$$",
+        hours: "Tue–Thu 18:00–23:00 · Fri–Sat 12:00–15:00, 18:00–23:00 · Sun–Mon closed",
+        phone: "+852 5742 6539",
+        maps: "https://maps.app.goo.gl/E6WSgbwDi1Ae5vEr6"
+      },
+      {
+        name: "Little Napoli Pizzeria",
+        zh: "",
+        cuisine: "Italian · Neapolitan Pizza",
+        hood: "Wan Chai · Tai Wong Street East",
+        why: "Authentic Neapolitan pies — walk-in only, only a few tables, arrive early. The pizza pick.",
+        address: "Shop 6, Antung Building, 6-16 Tai Wong Street East, Wan Chai",
+        price: "$$",
+        hours: "Tue 18:00–22:00 · Wed–Sun 12:00–15:00, 18:00 onwards · Mon closed",
+        phone: "",
+        maps: "https://maps.app.goo.gl/fjKied6v7is7Ydor9"
+      },
+      {
+        name: "Hansik Goo",
+        zh: "",
+        cuisine: "Modern Korean · Tasting Menu",
+        hood: "Central · The Wellington",
+        why: "1⭐ Michelin · 10-course seasonal Korean from Mingoo Kang's team — abalone dumpling, ginseng-chicken roulade.",
+        address: "1/F, The Wellington, 198 Wellington Street, Central",
+        price: "$$$$",
+        hours: "Tue–Sun 12:00–15:00, dinner service · Mon closed",
+        phone: "+852 2798 8768",
+        maps: "https://maps.app.goo.gl/M9ZEXe5xQGi5eWBk8"
+      },
+      {
+        name: "Fireside",
+        zh: "",
+        cuisine: "Open-Fire Steakhouse",
+        hood: "Central · H Code",
+        why: "Open-fire grill (wood + binchotan) — El Capricho & Rubia Gallega cuts, bone-in Hanwoo, carabinero prawns flambadou. World's 101 Best Steak list.",
+        address: "5/F, The Steps, H Code, 45 Pottinger Street, Central",
+        price: "$$$$",
+        hours: "Mon–Thu 12:00–15:00, 18:00–22:00 · Fri–Sat to 23:00 · Sun closed",
+        phone: "",
+        maps: "https://maps.app.goo.gl/Ecd9TDttU3arqW9i6"
+      },
+      {
+        name: "Yan Toh Heen (Lai Ching Heen)",
+        zh: "欣圖軒 / 麗晶軒",
+        cuisine: "Cantonese · Fine Dining",
+        hood: "TST · InterContinental HK",
+        why: "Michelin-starred heritage Cantonese with harbour views — jade settings, refined classics. (Recently rebranded Lai Ching Heen.)",
+        address: "Lower Level, InterContinental Hong Kong, 18 Salisbury Road, TST, Kowloon",
+        price: "$$$$",
+        hours: "Mon–Sat 12:00–14:30, 18:00–22:00 · Sun 11:30–15:00, 18:00–22:00",
+        phone: "+852 2313 2323",
+        maps: "https://maps.app.goo.gl/tU8uFwhxUoHJjj43A"
+      },
+      {
+        name: "Ho Lee Fook",
+        zh: "口利福",
+        cuisine: "Modern Cantonese",
+        hood: "Soho · Elgin Street",
+        why: "Loud, fun, neon-and-maneki-neko modern Cantonese — wagyu short rib, prawn toast, three-yellow chicken. Wok hei done right.",
+        address: "1-5 Elgin Street, SoHo, Central",
+        price: "$$$",
+        hours: "Sun–Wed 18:00–22:30 · Thu–Sat 18:00–23:30",
+        phone: "+852 2810 0860",
+        maps: "https://maps.app.goo.gl/7GiBaEQUNVcjdkzR8"
+      }
+    ];
+
+    const grid = document.getElementById('grid');
+    const toast = document.getElementById('toast');
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove('show'), 1600);
+    }
+
+    async function copyName(name) {
+      try {
+        await navigator.clipboard.writeText(name);
+        showToast(`Copied "${name}"`);
+      } catch (e) {
+        // fallback for older / restrictive browsers
+        const ta = document.createElement('textarea');
+        ta.value = name; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); showToast(`Copied "${name}"`); }
+        catch { showToast('Copy failed — long-press the name'); }
+        document.body.removeChild(ta);
+      }
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function render() {
+      grid.innerHTML = venues.map((v, i) => {
+        const zh = v.zh ? `<p class="text-sm text-slate-500 mt-0.5">${escapeHtml(v.zh)}</p>` : '';
+        const phone = v.phone ? `<span class="inline-flex items-center gap-1"><span aria-hidden="true">☎</span><a href="tel:${escapeHtml(v.phone.replace(/\s+/g,''))}" class="hover:text-amber-700 underline-offset-2 hover:underline">${escapeHtml(v.phone)}</a></span>` : '';
+        const hours = v.hours ? `<p class="text-xs text-slate-500 mt-1 leading-snug"><span aria-hidden="true">🕒</span> ${escapeHtml(v.hours)}</p>` : '';
+        return `
+          <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm">
+            <header>
+              <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">${escapeHtml(v.name)}</h2>
+              ${zh}
+            </header>
+
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-medium">${escapeHtml(v.cuisine)}</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 font-medium">${escapeHtml(v.hood)}</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-medium">${escapeHtml(v.price)}</span>
+            </div>
+
+            <p class="text-sm text-slate-700 italic leading-snug">${escapeHtml(v.why)}</p>
+
+            <div class="text-xs text-slate-600 leading-relaxed flex flex-col gap-1 mt-1">
+              <p><span aria-hidden="true">📍</span> ${escapeHtml(v.address)}</p>
+              ${phone ? `<p>${phone}</p>` : ''}
+              ${hours}
+            </div>
+
+            <div class="mt-auto pt-2 flex flex-col sm:flex-row gap-2">
+              <a href="${escapeHtml(v.maps)}" target="_blank" rel="noopener noreferrer"
+                class="flex-1 inline-flex items-center justify-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
+                <span aria-hidden="true">🗺️</span> Open in Maps
+              </a>
+              <button type="button" data-copy="${escapeHtml(v.name)}"
+                class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
+                <span aria-hidden="true">💬</span> Copy name
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      grid.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-copy]');
+        if (btn) copyName(btn.getAttribute('data-copy'));
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>
