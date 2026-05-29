@@ -51,7 +51,7 @@
       to drop the venue name straight into the group chat.
     </p>
     <p class="text-slate-500 text-sm mt-3">
-      19 sit-down picks + 15 dai pai dong alternatives across Hong Kong Island, Kowloon, and the New Territories. Mix of Michelin, neighborhood favorites, crowd-pleasers, and street-stall classics.
+      19 sit-down picks + 15 dai pai dong alternatives across Hong Kong Island, Kowloon, and the New Territories. Mix of Michelin, neighborhood favorites, crowd-pleasers, and street-stall classics. DPD cards tagged ❄️ Indoor / 🌬️ Outdoor / 🔀 Mixed for HK heat days.
     </p>
   </header>
 
@@ -66,8 +66,16 @@
         <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Dai Pai Dong alternatives — if you'd rather do street-stall</h2>
       </div>
       <p class="text-slate-600 text-sm leading-relaxed max-w-2xl mb-6">
-        Cash-only by default — Ladies' Street Sik Faan, Chan Kun Kee, and ChorLand also take card. Tap a card to open in Maps.
+        Cash-only by default — Ladies' Street Sik Faan, Chan Kun Kee, and ChorLand also take card. Tap a card to open in Maps. Each card is tagged ❄️ Indoor A/C, 🌬️ Outdoor, or 🔀 Mixed for HK heat days — use the filter to narrow down.
       </p>
+
+      <div id="dpd-filter" class="flex flex-wrap items-center gap-2 mb-6 text-xs">
+        <span class="text-slate-500 font-medium uppercase tracking-wide">Filter:</span>
+        <button type="button" data-filter="all" class="dpd-filter-btn px-3 py-1 rounded-full bg-slate-800 text-white font-medium transition-colors">All</button>
+        <button type="button" data-filter="indoor" class="dpd-filter-btn px-3 py-1 rounded-full bg-sky-100 text-sky-800 hover:bg-sky-200 font-medium transition-colors">❄️ Indoor</button>
+        <button type="button" data-filter="outdoor" class="dpd-filter-btn px-3 py-1 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 font-medium transition-colors">🌬️ Outdoor</button>
+        <button type="button" data-filter="mixed" class="dpd-filter-btn px-3 py-1 rounded-full bg-stone-200 text-stone-700 hover:bg-stone-300 font-medium transition-colors">🔀 Mixed</button>
+      </div>
 
       <h3 class="text-base font-semibold text-slate-800 mt-2 mb-3">HK Island</h3>
       <div id="dpd-grid-hki" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
@@ -329,6 +337,7 @@
         cuisine: "Cantonese · Stir-fry",
         hood: "Central · Stanley Street",
         area: "hki",
+        seating: "outdoor",
         why: "Central's last great outdoor DPD — plastic stools under umbrellas on Stanley Street. Chilli pepper squid, stir-fried crab, sizzling clay-pot eggplant. ~HK$80/pax.",
         address: "9-10 Stanley Street, Central · MTR Central · cash only",
         price: "$",
@@ -342,6 +351,7 @@
         cuisine: "Glutinous rice · Pan-fried rice rolls",
         hood: "Wan Chai · Lockhart Road",
         area: "hki",
+        seating: "indoor",
         why: "Famous for 生炒糯米飯 (wok-tossed glutinous rice) + 煎腸粉 (pan-fried rice rolls). Casual, locals-heavy. Different shop from the Sham Shui Po Keung Kee.",
         address: "G/F, 406 Lockhart Road, Wan Chai · MTR Wan Chai · cash only · closed Mondays",
         price: "$",
@@ -355,6 +365,7 @@
         cuisine: "Cantonese · Stir-fry",
         hood: "Fortress Hill · Electric Road",
         area: "hki",
+        seating: "mixed",
         why: "Hidden-gem family-run DPD. Long all-day hours, locals-only crowd, low tourist factor.",
         address: "G/F, 130 Electric Road, Fortress Hill · MTR Fortress Hill · cash only",
         price: "$",
@@ -368,6 +379,7 @@
         cuisine: "Cantonese · Wok Hei Seafood",
         hood: "Sham Shui Po",
         area: "klw",
+        seating: "indoor",
         why: "Since 1956 — one of HK's oldest DPDs. Indoor A/C, wok fires on the street. Salt-and-pepper squid, garlic-steamed razor clams, salted-egg-yolk prawns. Each dish feeds 2-3, built for group ordering. Electronic queue, 30-60 min peak wait.",
         address: "1A-1C Shek Kip Mei Street, Sham Shui Po · MTR Sham Shui Po · cash only",
         price: "$$",
@@ -381,6 +393,7 @@
         cuisine: "Cantonese · Home Cooking",
         hood: "Sham Shui Po · Pei Ho Street",
         area: "klw",
+        seating: "indoor",
         why: "50+ years, family-operated. Upstairs in Pei Ho Street Market cooked-food centre. Deep-fried whole pigeon with spiced salt, minced pork + salted fish braised eggplant, wok-fried chicken with mushrooms. Hot pot for groups.",
         address: "Shop CF1, 2/F, Cooked Food Centre, Pei Ho Street Market, 333 Ki Lung Street, Sham Shui Po · MTR Sham Shui Po · cash only",
         price: "$",
@@ -394,6 +407,7 @@
         cuisine: "Modern DPD-style",
         hood: "Mong Kok · Tung Choi Street",
         area: "klw",
+        seating: "indoor",
         why: "Modern DPD take — neon signs, iron gates. Prawn toast, honey pepper beef + potato, sweet-and-sour pork. Indoor A/C, reservations OK, easier for mixed-language group. 90-min table limit.",
         address: "Shop B, 1/F, Witty Commercial Bldg, 1A-1L Tung Choi Street, Mong Kok · MTR Mong Kok · cash + card",
         price: "$$",
@@ -407,6 +421,7 @@
         cuisine: "Cantonese DPD (modernized)",
         hood: "Shek Mun, Sha Tin · Kings Wing Plaza 2",
         area: "nt",
+        seating: "indoor",
         why: "40+ years. Relocated indoors 2018 to A/C venue with 12 stoves and 90 tables — by far the biggest group capacity. Roast pigeon, deep-fried oyster cakes, salt-and-pepper squid, hand-shredded chicken with wasabi, clams in tom yum broth. ~30 min MTR from Admiralty via East Rail Line. Open till 1:30 AM.",
         address: "Kings Wing Plaza 2, 1 On Kwan Street, Shek Mun, Sha Tin · MTR Shek Mun · cash + card",
         price: "$$",
@@ -420,6 +435,7 @@
         cuisine: "Cantonese · Typhoon-Shelter Seafood",
         hood: "Wan Chai · Bowrington Road",
         area: "hki",
+        seating: "outdoor",
         why: "Late-night Bowrington Road institution — typhoon-shelter crab, pepper mantis shrimp, crispy garlic chicken, charcoal-roasted pigeon. Lights on till 3 AM, walkable from Causeway Bay MTR.",
         address: "Shop B, G/F, 16 Bowrington Road, Wan Chai · MTR Causeway Bay · cash only",
         price: "$$",
@@ -433,6 +449,7 @@
         cuisine: "Cantonese · Stir-fry + Clay Pot",
         hood: "Causeway Bay · Lockhart Road",
         area: "hki",
+        seating: "indoor",
         why: "A/C indoor DPD with plenty of room for a group — classic wok stir-fries plus sizzling clay-pot rice. Honey beef + potato, chilli-boiled fish, dace-stuffed trio. Easier set-up than a tarp-and-stool outdoor stall.",
         address: "Shop A, G/F, Wah Fat Mansion, 405-419 Lockhart Road, Causeway Bay · MTR Causeway Bay · cash only",
         price: "$",
@@ -446,6 +463,7 @@
         cuisine: "Cantonese · Cooked-Food Centre",
         hood: "Sai Ying Pun · Centre Street Market",
         area: "hki",
+        seating: "indoor",
         why: "Tiny A/C stall (~12 tables) inside the Centre Street cooked-food centre, open till 2 AM. Oyster omelette, salt-yolk squid, minced-pork eggplant. Easy detour from Sheung Wan or Sai Ying Pun side.",
         address: "2/F, Centre Street Market, 44 Centre Street, Sai Ying Pun · MTR Sai Ying Pun · cash only",
         price: "$",
@@ -459,6 +477,7 @@
         cuisine: "Modern DPD · Cantonese",
         hood: "To Kwa Wan · Po Kwong Building",
         area: "klw",
+        seating: "indoor",
         why: "Tatler-listed modernized DPD — typhoon-shelter squid, truffle minced-pork patties with lotus root, oat-crusted shrimp balls with salted egg yolk. Reservations via inline.app — be seated by 6:30 PM or queue. A standout if the group wants creative-but-still-DPD.",
         address: "Shop C&D, G/F, Po Kwong Building, 2C Ma Hang Chung Road, To Kwa Wan · cash + card (verify before going)",
         price: "$$",
@@ -472,6 +491,7 @@
         cuisine: "Cantonese · Seafood + Clay Pot",
         hood: "Jordan · Woosung Street",
         area: "klw",
+        seating: "mixed",
         why: "Standout stall inside the Woosung Street Cooked Food Bazaar (reopened 2021 with the barrel-shaped roof). Braised clams with oil + salt, braised Bombay duck, boiled sea snails in spicy Chinese wine, black-bean stir-fried clams. Open till 1 AM.",
         address: "Shop 6-8, G/F, Temporary Cooked Food Hawker Bazaar, 29-39 Woosung Street, Jordan · MTR Jordan · cash only",
         price: "$",
@@ -485,6 +505,7 @@
         cuisine: "Cantonese · Spicy Crab + Seafood",
         hood: "Jordan · Temple Street",
         area: "klw",
+        seating: "outdoor",
         why: "Namesake spicy crabs (live mud crabs picked from the tank, fried with chilli, garlic, five-spice). Quintessential Temple Street night-market DPD — busy, fast, table-turn focused. Pick-from-tank crayfish + lobsters too.",
         address: "G/F, 210 Temple Street, Jordan · MTR Jordan Exit A · cash only",
         price: "$$",
@@ -498,6 +519,7 @@
         cuisine: "Multi-stall · Noodles, Pork Chops, Hainan Chicken",
         hood: "Tsim Sha Tsui · under the Haiphong Road flyover",
         area: "klw",
+        seating: "indoor",
         why: "Whole-bazaar pick — 9 stalls in a renovated 2020 space tucked under the flyover. Hap Heung Yuen's satay beef noodles (40+ years), Wah Heung Yuen pork chops, Man Kee Hainan chicken rice, Tak Fat beef balls. Order across stalls, share at one table. Closest cooked-food-centre experience to TST hotels.",
         address: "Haiphong Road Temporary Cooked Food Hawker Bazaar, near Kowloon Park · MTR Tsim Sha Tsui Exit A1 · cash only",
         price: "$",
@@ -511,6 +533,7 @@
         cuisine: "Cantonese · Roast Pigeon + Seafood",
         hood: "Fo Tan · Cooked Food Market (East)",
         area: "nt",
+        seating: "indoor",
         why: "Roast pigeon (smaller, younger birds — crispier skin) + salt-and-pepper tofu + razor clams cooked how-you-want. A/C indoor cooked-food-market venue, open till 3 AM. Real outer-NT pick — Fo Tan MTR (East Rail), 4 stops from Mong Kok East.",
         address: "Fo Tan Cooked Food Market (East), Shan Mei Street, Fo Tan · MTR Fo Tan · cash only",
         price: "$",
@@ -551,12 +574,23 @@
       return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
 
+    const SEATING_BADGE = {
+      indoor:  { label: '❄️ Indoor A/C',   classes: 'bg-sky-100 text-sky-800' },
+      outdoor: { label: '🌬️ Outdoor',      classes: 'bg-amber-100 text-amber-800' },
+      mixed:   { label: '🔀 Mixed seating', classes: 'bg-stone-200 text-stone-700' },
+    };
+
     function cardHtml(v) {
       const zh = v.zh ? `<p class="text-sm text-slate-500 mt-0.5">${escapeHtml(v.zh)}</p>` : '';
       const phone = v.phone ? `<span class="inline-flex items-center gap-1"><span aria-hidden="true">☎</span><a href="tel:${escapeHtml(v.phone.replace(/\s+/g,''))}" class="hover:text-amber-700 underline-offset-2 hover:underline">${escapeHtml(v.phone)}</a></span>` : '';
       const hours = v.hours ? `<p class="text-xs text-slate-500 mt-1 leading-snug"><span aria-hidden="true">🕒</span> ${escapeHtml(v.hours)}</p>` : '';
+      const seatingMeta = v.seating && SEATING_BADGE[v.seating];
+      const seatingBadge = seatingMeta
+        ? `<span class="text-xs px-2 py-0.5 rounded-full ${seatingMeta.classes} font-medium">${seatingMeta.label}</span>`
+        : '';
+      const dataSeating = v.seating ? ` data-seating="${escapeHtml(v.seating)}"` : '';
       return `
-        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm">
+        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm"${dataSeating}>
           <header>
             <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">${escapeHtml(v.name)}</h2>
             ${zh}
@@ -566,6 +600,7 @@
             <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-medium">${escapeHtml(v.cuisine)}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 font-medium">${escapeHtml(v.hood)}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-medium">${escapeHtml(v.price)}</span>
+            ${seatingBadge}
           </div>
 
           <p class="text-sm text-slate-700 italic leading-snug">${escapeHtml(v.why)}</p>
@@ -609,7 +644,34 @@
       attachCopyHandler(dpdGridNt);
     }
 
+    function applyDpdFilter(filter) {
+      const grids = [dpdGridHki, dpdGridKlw, dpdGridNt];
+      grids.forEach(g => {
+        g.querySelectorAll('article[data-seating]').forEach(card => {
+          const match = filter === 'all' || card.dataset.seating === filter;
+          card.classList.toggle('hidden', !match);
+        });
+      });
+      document.querySelectorAll('.dpd-filter-btn').forEach(btn => {
+        const isActive = btn.dataset.filter === filter;
+        btn.classList.toggle('ring-2', isActive);
+        btn.classList.toggle('ring-offset-2', isActive);
+        btn.classList.toggle('ring-slate-800', isActive);
+      });
+    }
+
+    function wireDpdFilter() {
+      const bar = document.getElementById('dpd-filter');
+      if (!bar) return;
+      bar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.dpd-filter-btn');
+        if (!btn) return;
+        applyDpdFilter(btn.dataset.filter);
+      });
+    }
+
     render();
+    wireDpdFilter();
   </script>
 </body>
 </html>
