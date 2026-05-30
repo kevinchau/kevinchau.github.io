@@ -112,6 +112,11 @@
   <!-- Grid -->
   <main class="max-w-6xl mx-auto px-5 pb-12">
     <h2 id="sitdown-header" class="text-xl sm:text-2xl font-bold tracking-tight mb-4 flex items-center gap-2"></h2>
+    <div id="group-filter" class="flex flex-wrap items-center gap-2 mb-6 text-xs">
+      <span id="group-filter-label" class="text-slate-500 font-medium uppercase tracking-wide"></span>
+      <button type="button" data-filter="all" class="group-filter-btn px-3 py-1 rounded-full bg-slate-800 text-white font-medium transition-colors"></button>
+      <button type="button" data-filter="groups" class="group-filter-btn px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 hover:bg-emerald-200 font-medium transition-colors"></button>
+    </div>
     <div id="grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
   </main>
 
@@ -153,7 +158,7 @@
       en: {
         heroTitle: 'HK Dinner Options',
         heroIntroHtml: 'Kevin\'s shortlist for our group dinner — tap a card to open in Maps, or hit <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 Copy name</span> to drop the venue name straight into the group chat.',
-        heroSub: '19 sit-down picks across Hong Kong Island and Kowloon. Mix of Michelin, neighborhood favorites, and crowd-pleasers.',
+        heroSub: '19 sit-down picks across Hong Kong Island and Kowloon. Mix of Michelin, neighborhood favorites, and crowd-pleasers. Tap "👥 Groups (6+)" to filter for our larger meals.',
         sectionSitdown: '🍽️ Sit-down',
         openMaps: '🗺️ Open in Maps',
         copyName: '💬 Copy name',
@@ -170,14 +175,18 @@
         fallbackHeader: 'Auto-copy didn\'t work — select all and copy manually, then paste into WhatsApp.',
         fallbackClose: 'Close',
         footerNote: 'Tap any card to open in Maps. Use 💬 Copy name to share a single venue, or 👍 Pick a few then 📋 Copy picks to drop the whole shortlist into chat.',
-        footerMeta: 'Last updated 2026-05-30 · Built for friends, not for SEO · No tracking on this page.',
+        footerMeta: 'Last updated 2026-05-30 · 11 group-friendly · Built for friends, not for SEO · No tracking on this page.',
         clipboardHeader: (n) => `My HK dinner picks (${n}):`,
         clipboardFooter: 'Picked from kevinchau.github.io/dining-hk/',
+        filterLabel: 'Filter:',
+        filterAll: 'All',
+        filterGroups: '👥 Groups (6+)',
+        badgeGroupOk: '👥 Groups OK',
       },
       zh: {
         heroTitle: '香港晚餐之選',
         heroIntroHtml: 'Kevin 為我哋聚餐揀嘅心水餐廳 — 撳卡片即可開啟地圖，或者撳 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 複製店名</span> 直接將店名貼入群組。',
-        heroSub: '19間正餐之選,遍佈香港島同九龍。包括米芝蓮、街坊名店同大眾化選擇。',
+        heroSub: '19間正餐之選,遍佈香港島同九龍。包括米芝蓮、街坊名店同大眾化選擇。撳「👥 大團 (6人以上)」可篩選適合大團嘅選擇。',
         sectionSitdown: '🍽️ 正餐之選',
         openMaps: '🗺️ 在地圖開啟',
         copyName: '💬 複製店名',
@@ -194,9 +203,13 @@
         fallbackHeader: '自動複製失敗 — 請全選並手動複製,然後貼入 WhatsApp。',
         fallbackClose: '關閉',
         footerNote: '撳任何卡片即可開啟地圖。撳 💬 複製店名 分享單一餐廳,或者 👍 揀幾間之後撳 📋 複製揀選,將整份名單貼入群組。',
-        footerMeta: '最後更新 2026-05-30 · 為朋友而設,並非為SEO · 本頁不作任何追蹤。',
+        footerMeta: '最後更新 2026-05-30 · 11間適合大團 · 為朋友而設,並非為SEO · 本頁不作任何追蹤。',
         clipboardHeader: (n) => `我的香港晚餐揀選 (${n}項):`,
         clipboardFooter: '自 kevinchau.github.io/dining-hk/ 揀選',
+        filterLabel: '篩選:',
+        filterAll: '全部',
+        filterGroups: '👥 大團 (6人以上)',
+        badgeGroupOk: '👥 大團 OK',
       },
     };
 
@@ -220,7 +233,8 @@
         price: "$$$",
         hours: "Daily 12:00–14:30, 18:00–24:00",
         phone: "+852 2368 1223",
-        maps: "https://maps.app.goo.gl/MtvaPjHuokQ8b4d27"
+        maps: "https://maps.app.goo.gl/MtvaPjHuokQ8b4d27",
+        groupOk: true
       },
       {
         name: "Ippoh Tempura",
@@ -232,7 +246,8 @@
         price: "$$$$",
         hours: "Mon–Tue & Thu–Sun 12:00–15:00, 18:00–23:00 · Wed closed",
         phone: "+852 2468 0641",
-        maps: "https://maps.app.goo.gl/RxEn8RYFX3PTMnq2A"
+        maps: "https://maps.app.goo.gl/RxEn8RYFX3PTMnq2A",
+        groupOk: false
       },
       {
         name: "Ask for Alonzo",
@@ -244,7 +259,8 @@
         price: "$$",
         hours: "Mon–Fri 11:30–22:00 · Sat–Sun 10:00–22:00",
         phone: "+852 6500 8405",
-        maps: "https://maps.app.goo.gl/QiLeVP78rK8BRbmQ7"
+        maps: "https://maps.app.goo.gl/QiLeVP78rK8BRbmQ7",
+        groupOk: true
       },
       {
         name: "Golden Leaf",
@@ -256,7 +272,8 @@
         price: "$$$",
         hours: "Mon–Sat 11:30–15:00, 18:00–23:00 · Sun dinner only 18:00–23:00",
         phone: "+852 2822 5777",
-        maps: "https://maps.app.goo.gl/c8vLWPBTukauARU49"
+        maps: "https://maps.app.goo.gl/c8vLWPBTukauARU49",
+        groupOk: true
       },
       {
         name: "Brasserie on the Eighth",
@@ -268,7 +285,8 @@
         price: "$$$",
         hours: "Daily dinner service (call to confirm) (verify before going)",
         phone: "",
-        maps: "https://maps.app.goo.gl/aXtqUswGcJSvhKP9A"
+        maps: "https://maps.app.goo.gl/aXtqUswGcJSvhKP9A",
+        groupOk: true
       },
       {
         name: "Man Ho",
@@ -280,7 +298,8 @@
         price: "$$$",
         hours: "Daily lunch + dinner",
         phone: "+852 2810 8366",
-        maps: "https://maps.app.goo.gl/Bc66GCG9BGJHGJK68"
+        maps: "https://maps.app.goo.gl/Bc66GCG9BGJHGJK68",
+        groupOk: true
       },
       {
         name: "Whey",
@@ -292,7 +311,8 @@
         price: "$$$$",
         hours: "Dinner service nightly (call to confirm) (verify before going)",
         phone: "+852 2693 3198",
-        maps: "https://maps.app.goo.gl/94yQU28fjZmw4HHv9"
+        maps: "https://maps.app.goo.gl/94yQU28fjZmw4HHv9",
+        groupOk: false
       },
       {
         name: "CENSU",
@@ -304,7 +324,8 @@
         price: "$$$",
         hours: "Call to confirm (verify before going)",
         phone: "+852 2997 7009",
-        maps: "https://maps.app.goo.gl/cN99oWi5nTmWZvZC9"
+        maps: "https://maps.app.goo.gl/cN99oWi5nTmWZvZC9",
+        groupOk: false
       },
       {
         name: "Moo-lah",
@@ -316,7 +337,8 @@
         price: "$$$",
         hours: "Tue–Sun 12:00–15:00, 18:00–22:00 · Mon closed",
         phone: "",
-        maps: "https://maps.app.goo.gl/tVZs4q1Mq5Mcu2qs6"
+        maps: "https://maps.app.goo.gl/tVZs4q1Mq5Mcu2qs6",
+        groupOk: false
       },
       {
         name: "Leela",
@@ -328,7 +350,8 @@
         price: "$$$",
         hours: "Mon 17:30–22:45 · Tue–Sun 12:00–15:30, 17:30–22:45",
         phone: "+852 2882 5316",
-        maps: "https://maps.app.goo.gl/sTg5QdAwVLPbqVdz8"
+        maps: "https://maps.app.goo.gl/sTg5QdAwVLPbqVdz8",
+        groupOk: true
       },
       {
         name: "Trattoria Felino",
@@ -340,7 +363,8 @@
         price: "$$",
         hours: "Dinner daily 18:00–23:00 · Lunch Fri–Sun 12:00–14:00",
         phone: "+852 5697 4477",
-        maps: "https://maps.app.goo.gl/TmEuf6J3SugDGzu86"
+        maps: "https://maps.app.goo.gl/TmEuf6J3SugDGzu86",
+        groupOk: true
       },
       {
         name: "22 Ships",
@@ -352,7 +376,8 @@
         price: "$$$",
         hours: "Mon–Sat 12:00–15:00, 18:00–23:00 · Sun 12:00–14:30, 18:00–23:00",
         phone: "+852 2555 0722",
-        maps: "https://maps.app.goo.gl/eqs32kbkj6LJBcRQA"
+        maps: "https://maps.app.goo.gl/eqs32kbkj6LJBcRQA",
+        groupOk: false
       },
       {
         name: "Racines",
@@ -364,7 +389,8 @@
         price: "$$$$",
         hours: "Tue–Thu 18:00–23:00 · Fri–Sat 12:00–15:00, 18:00–23:00 · Sun–Mon closed",
         phone: "+852 5742 6539",
-        maps: "https://maps.app.goo.gl/E6WSgbwDi1Ae5vEr6"
+        maps: "https://maps.app.goo.gl/E6WSgbwDi1Ae5vEr6",
+        groupOk: false
       },
       {
         name: "Little Napoli Pizzeria",
@@ -376,7 +402,8 @@
         price: "$$",
         hours: "Tue 18:00–22:00 · Wed–Sun 12:00–15:00, 18:00 onwards · Mon closed",
         phone: "",
-        maps: "https://maps.app.goo.gl/fjKied6v7is7Ydor9"
+        maps: "https://maps.app.goo.gl/fjKied6v7is7Ydor9",
+        groupOk: false
       },
       {
         name: "Hansik Goo",
@@ -388,7 +415,8 @@
         price: "$$$$",
         hours: "Tue–Sun 12:00–15:00, dinner service · Mon closed",
         phone: "+852 2798 8768",
-        maps: "https://maps.app.goo.gl/M9ZEXe5xQGi5eWBk8"
+        maps: "https://maps.app.goo.gl/M9ZEXe5xQGi5eWBk8",
+        groupOk: false
       },
       {
         name: "Fireside",
@@ -400,7 +428,8 @@
         price: "$$$$",
         hours: "Mon–Thu 12:00–15:00, 18:00–22:00 · Fri–Sat to 23:00 · Sun closed",
         phone: "",
-        maps: "https://maps.app.goo.gl/Ecd9TDttU3arqW9i6"
+        maps: "https://maps.app.goo.gl/Ecd9TDttU3arqW9i6",
+        groupOk: true
       },
       {
         name: "Yan Toh Heen (Lai Ching Heen)",
@@ -412,7 +441,8 @@
         price: "$$$$",
         hours: "Mon–Sat 12:00–14:30, 18:00–22:00 · Sun 11:30–15:00, 18:00–22:00",
         phone: "+852 2313 2323",
-        maps: "https://maps.app.goo.gl/tU8uFwhxUoHJjj43A"
+        maps: "https://maps.app.goo.gl/tU8uFwhxUoHJjj43A",
+        groupOk: true
       },
       {
         name: "Ho Lee Fook",
@@ -424,7 +454,8 @@
         price: "$$$",
         hours: "Sun–Wed 18:00–22:30 · Thu–Sat 18:00–23:30",
         phone: "+852 2810 0860",
-        maps: "https://maps.app.goo.gl/7GiBaEQUNVcjdkzR8"
+        maps: "https://maps.app.goo.gl/7GiBaEQUNVcjdkzR8",
+        groupOk: true
       },
       {
         name: "Grand Majestic Sichuan",
@@ -436,7 +467,8 @@
         price: "$$$",
         hours: "Lunch daily 12:00–14:30 · Dinner Sun–Tue 18:00–22:00, Wed–Thu 18:00–22:30, Fri–Sat 18:00–22:45",
         phone: "+852 2151 1299",
-        maps: "https://maps.app.goo.gl/yKPqcTmjb89ehfRn6"
+        maps: "https://maps.app.goo.gl/yKPqcTmjb89ehfRn6",
+        groupOk: true
       }
     ];
 
@@ -619,8 +651,10 @@
       const venueId = escapeHtml(v.id);
       // Copy-name button copies Chinese name when in zh mode and a zh name exists; else English.
       const copyTarget = (currentLang === 'zh' && v.zh) ? v.zh : v.name;
+      const groupAttr = v.groupOk ? ' data-group="yes"' : '';
+      const groupBadge = v.groupOk ? `<span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-medium">${escapeHtml(t('badgeGroupOk'))}</span>` : '';
       return `
-        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm" data-venue-id="${venueId}">
+        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm" data-venue-id="${venueId}"${groupAttr}>
           <header>
             <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">${escapeHtml(v.name)}</h2>
             ${zh}
@@ -630,6 +664,7 @@
             <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-medium">${escapeHtml(tv(v, 'cuisine'))}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 font-medium">${escapeHtml(tv(v, 'hood'))}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-medium">${escapeHtml(v.price)}</span>
+            ${groupBadge}
           </div>
 
           <p class="text-sm text-slate-700 italic leading-snug">${escapeHtml(tv(v, 'why'))}</p>
@@ -673,6 +708,11 @@
 
       // Section header
       document.getElementById('sitdown-header').textContent = t('sectionSitdown');
+
+      // Group filter labels
+      document.getElementById('group-filter-label').textContent = t('filterLabel');
+      document.querySelector('.group-filter-btn[data-filter="all"]').textContent = t('filterAll');
+      document.querySelector('.group-filter-btn[data-filter="groups"]').textContent = t('filterGroups');
 
       // Footer
       document.getElementById('footer-note').textContent = t('footerNote');
@@ -836,6 +876,37 @@
     }
 
     // ============================================================
+    // GROUP FILTER
+    // ============================================================
+    let currentGroupFilter = 'all'; // 'all' | 'groups'
+
+    function applyGroupFilter(filter) {
+      const cards = grid.querySelectorAll('article.card');
+      cards.forEach(c => {
+        const isGroup = c.getAttribute('data-group') === 'yes';
+        const show = filter === 'all' || (filter === 'groups' && isGroup);
+        c.style.display = show ? '' : 'none';
+      });
+      document.querySelectorAll('.group-filter-btn').forEach(btn => {
+        const isActive = btn.dataset.filter === filter;
+        btn.classList.toggle('ring-2', isActive);
+        btn.classList.toggle('ring-offset-1', isActive);
+        btn.classList.toggle('ring-slate-400', isActive);
+      });
+    }
+
+    function wireGroupFilter() {
+      const bar = document.getElementById('group-filter');
+      if (!bar) return;
+      bar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.group-filter-btn');
+        if (!btn) return;
+        currentGroupFilter = btn.dataset.filter;
+        applyGroupFilter(currentGroupFilter);
+      });
+    }
+
+    // ============================================================
     // LANG TOGGLE
     // ============================================================
     function loadLang() {
@@ -865,6 +936,7 @@
       render();
       syncPickButtons();
       renderBar();
+      applyGroupFilter(currentGroupFilter);
     }
 
     function wireLangToggle() {
@@ -887,6 +959,8 @@
     renderBar();
     wirePicks();
     wireLangToggle();
+    wireGroupFilter();
+    applyGroupFilter(currentGroupFilter);
   </script>
 </body>
 </html>
