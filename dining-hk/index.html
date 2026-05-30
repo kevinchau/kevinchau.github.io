@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#fef3c7">
-  <meta name="description" content="Kevin's shortlist of Hong Kong dinner picks for our group meal — 19 sit-down options + 15 dai pai dong alternatives across Hong Kong Island, Kowloon, and the New Territories.">
+  <meta name="description" content="Kevin's shortlist of Hong Kong dinner picks for our group meal — 19 sit-down options across Hong Kong Island and Kowloon.">
   <title>HK Dinner Options — Kevin's shortlist</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%BD%EF%B8%8F%3C/text%3E%3C/svg%3E">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -113,32 +113,6 @@
   <main class="max-w-6xl mx-auto px-5 pb-12">
     <h2 id="sitdown-header" class="text-xl sm:text-2xl font-bold tracking-tight mb-4 flex items-center gap-2"></h2>
     <div id="grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
-
-    <!-- DPD section -->
-    <section class="mt-12 pt-8 border-t border-stone-200">
-      <div class="flex items-center gap-3 mb-2">
-        <span class="text-2xl sm:text-3xl" aria-hidden="true">🥡</span>
-        <h2 id="dpd-header" class="text-xl sm:text-2xl font-bold tracking-tight"></h2>
-      </div>
-      <p id="dpd-intro" class="text-slate-600 text-sm leading-relaxed max-w-2xl mb-6"></p>
-
-      <div id="dpd-filter" class="flex flex-wrap items-center gap-2 mb-6 text-xs">
-        <span id="dpd-filter-label" class="text-slate-500 font-medium uppercase tracking-wide"></span>
-        <button type="button" data-filter="all" class="dpd-filter-btn px-3 py-1 rounded-full bg-slate-800 text-white font-medium transition-colors"></button>
-        <button type="button" data-filter="indoor" class="dpd-filter-btn px-3 py-1 rounded-full bg-sky-100 text-sky-800 hover:bg-sky-200 font-medium transition-colors"></button>
-        <button type="button" data-filter="outdoor" class="dpd-filter-btn px-3 py-1 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 font-medium transition-colors"></button>
-        <button type="button" data-filter="mixed" class="dpd-filter-btn px-3 py-1 rounded-full bg-stone-200 text-stone-700 hover:bg-stone-300 font-medium transition-colors"></button>
-      </div>
-
-      <h3 id="area-hki" class="text-base font-semibold text-slate-800 mt-2 mb-3"></h3>
-      <div id="dpd-grid-hki" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
-
-      <h3 id="area-klw" class="text-base font-semibold text-slate-800 mt-8 mb-3"></h3>
-      <div id="dpd-grid-klw" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
-
-      <h3 id="area-nt" class="text-base font-semibold text-slate-800 mt-8 mb-3"></h3>
-      <div id="dpd-grid-nt" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
-    </section>
   </main>
 
   <!-- Footer -->
@@ -179,21 +153,8 @@
       en: {
         heroTitle: 'HK Dinner Options',
         heroIntroHtml: 'Kevin\'s shortlist for our group dinner — tap a card to open in Maps, or hit <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 Copy name</span> to drop the venue name straight into the group chat.',
-        heroSub: '19 sit-down picks + 15 dai pai dong alternatives across Hong Kong Island, Kowloon, and the New Territories. Mix of Michelin, neighborhood favorites, crowd-pleasers, and street-stall classics. DPD cards tagged ❄️ Indoor / 🌬️ Outdoor / 🔀 Mixed for HK heat days.',
+        heroSub: '19 sit-down picks across Hong Kong Island and Kowloon. Mix of Michelin, neighborhood favorites, and crowd-pleasers.',
         sectionSitdown: '🍽️ Sit-down',
-        sectionDpd: 'Dai Pai Dong alternatives — if you\'d rather do street-stall',
-        dpdIntro: 'Cash-only by default — Ladies\' Street Sik Faan, Chan Kun Kee, and ChorLand also take card. Tap a card to open in Maps. Each card is tagged ❄️ Indoor A/C, 🌬️ Outdoor, or 🔀 Mixed for HK heat days — use the filter to narrow down.',
-        filterLabel: 'Filter:',
-        filterAll: 'All',
-        filterIndoor: '❄️ Indoor',
-        filterOutdoor: '🌬️ Outdoor',
-        filterMixed: '🔀 Mixed',
-        areaHki: 'HK Island',
-        areaKlw: 'Kowloon',
-        areaNt: 'New Territories',
-        seatingIndoor: '❄️ Indoor A/C',
-        seatingOutdoor: '🌬️ Outdoor',
-        seatingMixed: '🔀 Mixed seating',
         openMaps: '🗺️ Open in Maps',
         copyName: '💬 Copy name',
         pickButton: '<span aria-hidden="true">👍</span> Pick',
@@ -208,29 +169,16 @@
         pickAtLeastOne: 'Pick at least 1 venue.',
         fallbackHeader: 'Auto-copy didn\'t work — select all and copy manually, then paste into WhatsApp.',
         fallbackClose: 'Close',
-        footerNote: '<span class="font-semibold text-slate-800">DPD note:</span> picks are cash-friendly and walk-in unless noted. For groups of 5+, arrive 15 min before opening for outdoor tables.',
-        footerMeta: 'Last updated 2026-05-29 · 15 DPD picks · Built for friends, not for SEO · No tracking on this page.',
+        footerNote: 'Tap any card to open in Maps. Use 💬 Copy name to share a single venue, or 👍 Pick a few then 📋 Copy picks to drop the whole shortlist into chat.',
+        footerMeta: 'Last updated 2026-05-30 · Built for friends, not for SEO · No tracking on this page.',
         clipboardHeader: (n) => `My HK dinner picks (${n}):`,
         clipboardFooter: 'Picked from kevinchau.github.io/dining-hk/',
       },
       zh: {
         heroTitle: '香港晚餐之選',
         heroIntroHtml: 'Kevin 為我哋聚餐揀嘅心水餐廳 — 撳卡片即可開啟地圖，或者撳 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 複製店名</span> 直接將店名貼入群組。',
-        heroSub: '19間正餐之選 + 15間大排檔之選,遍佈香港島、九龍同新界。包括米芝蓮、街坊名店、大眾化選擇同經典街頭小食。大排檔卡片標有 ❄️ 室內冷氣 / 🌬️ 露天 / 🔀 半露天,啱香港熱天用。',
+        heroSub: '19間正餐之選,遍佈香港島同九龍。包括米芝蓮、街坊名店同大眾化選擇。',
         sectionSitdown: '🍽️ 正餐之選',
-        sectionDpd: '大排檔之選 — 想食街頭風味嘅可以揀呢類',
-        dpdIntro: '預設只收現金 — 女人街食飯公司、陳根記、楚撚記都收卡。撳卡片即可開啟地圖。每張卡片標有 ❄️ 室內冷氣、🌬️ 露天或 🔀 半露天,香港熱天可用篩選功能縮窄選擇。',
-        filterLabel: '篩選:',
-        filterAll: '全部',
-        filterIndoor: '❄️ 室內冷氣',
-        filterOutdoor: '🌬️ 露天',
-        filterMixed: '🔀 半露天',
-        areaHki: '🏝️ 香港島',
-        areaKlw: '🌃 九龍',
-        areaNt: '🏞️ 新界',
-        seatingIndoor: '❄️ 室內冷氣',
-        seatingOutdoor: '🌬️ 露天',
-        seatingMixed: '🔀 室內外座位',
         openMaps: '🗺️ 在地圖開啟',
         copyName: '💬 複製店名',
         pickButton: '<span aria-hidden="true">👍</span> 揀',
@@ -245,8 +193,8 @@
         pickAtLeastOne: '請至少揀一間餐廳。',
         fallbackHeader: '自動複製失敗 — 請全選並手動複製,然後貼入 WhatsApp。',
         fallbackClose: '關閉',
-        footerNote: '<span class="font-semibold text-slate-800">大排檔備註:</span>除非另有註明,否則餐廳一般收現金兼免預約。如5人以上同行,建議開門前15分鐘到場以爭取露天座位。',
-        footerMeta: '最後更新 2026-05-29 · 15間大排檔之選 · 為朋友而設,並非為SEO · 本頁不作任何追蹤。',
+        footerNote: '撳任何卡片即可開啟地圖。撳 💬 複製店名 分享單一餐廳,或者 👍 揀幾間之後撳 📋 複製揀選,將整份名單貼入群組。',
+        footerMeta: '最後更新 2026-05-30 · 為朋友而設,並非為SEO · 本頁不作任何追蹤。',
         clipboardHeader: (n) => `我的香港晚餐揀選 (${n}項):`,
         clipboardFooter: '自 kevinchau.github.io/dining-hk/ 揀選',
       },
@@ -492,223 +440,7 @@
       }
     ];
 
-    const dpdVenues = [
-      {
-        name: "Sing Kee",
-        zh: "盛記",
-        cuisine: "Cantonese · Stir-fry",
-        hood: "Central · Stanley Street",
-        area: "hki",
-        seating: "outdoor",
-        why: "Central's last great outdoor DPD — plastic stools under umbrellas on Stanley Street. Chilli pepper squid, stir-fried crab, sizzling clay-pot eggplant. ~HK$80/pax.",
-        address: "9-10 Stanley Street, Central · MTR Central · cash only",
-        price: "$",
-        hours: "Daily 11:00–15:00, 17:00–23:00",
-        phone: "+852 2541 5678",
-        maps: "https://www.google.com/maps/search/Sing+Kee+Stanley+Street+Central+Hong+Kong"
-      },
-      {
-        name: "Keung Kee (Wan Chai)",
-        zh: "強記美食",
-        cuisine: "Glutinous rice · Pan-fried rice rolls",
-        hood: "Wan Chai · Lockhart Road",
-        area: "hki",
-        seating: "indoor",
-        why: "Famous for 生炒糯米飯 (wok-tossed glutinous rice) + 煎腸粉 (pan-fried rice rolls). Casual, locals-heavy. Different shop from the Sham Shui Po Keung Kee.",
-        address: "G/F, 406 Lockhart Road, Wan Chai · MTR Wan Chai · cash only · closed Mondays",
-        price: "$",
-        hours: "Tue–Sun 12:00–22:00 · Mon closed",
-        phone: "",
-        maps: "https://www.google.com/maps/search/Keung+Kee+406+Lockhart+Road+Wan+Chai"
-      },
-      {
-        name: "Hip Shing Dai Pai Dong",
-        zh: "協成",
-        cuisine: "Cantonese · Stir-fry",
-        hood: "Fortress Hill · Electric Road",
-        area: "hki",
-        seating: "mixed",
-        why: "Hidden-gem family-run DPD. Long all-day hours, locals-only crowd, low tourist factor.",
-        address: "G/F, 130 Electric Road, Fortress Hill · MTR Fortress Hill · cash only",
-        price: "$",
-        hours: "Daily 11:00–23:00",
-        phone: "+852 2571 2222",
-        maps: "https://www.google.com/maps/search/Hip+Shing+130+Electric+Road+Fortress+Hill"
-      },
-      {
-        name: "Oi Man Sang",
-        zh: "愛文生",
-        cuisine: "Cantonese · Wok Hei Seafood",
-        hood: "Sham Shui Po",
-        area: "klw",
-        seating: "indoor",
-        why: "Since 1956 — one of HK's oldest DPDs. Indoor A/C, wok fires on the street. Salt-and-pepper squid, garlic-steamed razor clams, salted-egg-yolk prawns. Each dish feeds 2-3, built for group ordering. Electronic queue, 30-60 min peak wait.",
-        address: "1A-1C Shek Kip Mei Street, Sham Shui Po · MTR Sham Shui Po · cash only",
-        price: "$$",
-        hours: "Daily 16:30–24:00 (last order 23:00)",
-        phone: "+852 2393 9315",
-        maps: "https://www.google.com/maps/search/Oi+Man+Sang+Shek+Kip+Mei+Street+Sham+Shui+Po"
-      },
-      {
-        name: "Dai Lee Dai Pai Dong",
-        zh: "大利美食大排檔",
-        cuisine: "Cantonese · Home Cooking",
-        hood: "Sham Shui Po · Pei Ho Street",
-        area: "klw",
-        seating: "indoor",
-        why: "50+ years, family-operated. Upstairs in Pei Ho Street Market cooked-food centre. Deep-fried whole pigeon with spiced salt, minced pork + salted fish braised eggplant, wok-fried chicken with mushrooms. Hot pot for groups.",
-        address: "Shop CF1, 2/F, Cooked Food Centre, Pei Ho Street Market, 333 Ki Lung Street, Sham Shui Po · MTR Sham Shui Po · cash only",
-        price: "$",
-        hours: "Dinner service (call to confirm)",
-        phone: "+852 9619 7148",
-        maps: "https://www.google.com/maps/search/Pei+Ho+Street+Market+Cooked+Food+Centre+Sham+Shui+Po"
-      },
-      {
-        name: "Ladies' Street Sik Faan",
-        zh: "女人街食飯公司",
-        cuisine: "Modern DPD-style",
-        hood: "Mong Kok · Tung Choi Street",
-        area: "klw",
-        seating: "indoor",
-        why: "Modern DPD take — neon signs, iron gates. Prawn toast, honey pepper beef + potato, sweet-and-sour pork. Indoor A/C, reservations OK, easier for mixed-language group. 90-min table limit.",
-        address: "Shop B, 1/F, Witty Commercial Bldg, 1A-1L Tung Choi Street, Mong Kok · MTR Mong Kok · cash + card",
-        price: "$$",
-        hours: "Daily 18:00–24:00",
-        phone: "Call ahead to reserve",
-        maps: "https://www.google.com/maps/search/Witty+Commercial+Building+Tung+Choi+Street+Mong+Kok"
-      },
-      {
-        name: "Chan Kun Kee",
-        zh: "陳根記",
-        cuisine: "Cantonese DPD (modernized)",
-        hood: "Shek Mun, Sha Tin · Kings Wing Plaza 2",
-        area: "nt",
-        seating: "indoor",
-        why: "40+ years. Relocated indoors 2018 to A/C venue with 12 stoves and 90 tables — by far the biggest group capacity. Roast pigeon, deep-fried oyster cakes, salt-and-pepper squid, hand-shredded chicken with wasabi, clams in tom yum broth. ~30 min MTR from Admiralty via East Rail Line. Open till 1:30 AM.",
-        address: "Kings Wing Plaza 2, 1 On Kwan Street, Shek Mun, Sha Tin · MTR Shek Mun · cash + card",
-        price: "$$",
-        hours: "Daily 17:00–01:30",
-        phone: "SevenRooms / walk-in",
-        maps: "https://www.google.com/maps/search/Chan+Kun+Kee+Kings+Wing+Plaza+Shek+Mun+Sha+Tin"
-      },
-      {
-        name: "Kui Kee Seafood",
-        zh: "駒記海鮮大排檔",
-        cuisine: "Cantonese · Typhoon-Shelter Seafood",
-        hood: "Wan Chai · Bowrington Road",
-        area: "hki",
-        seating: "outdoor",
-        why: "Late-night Bowrington Road institution — typhoon-shelter crab, pepper mantis shrimp, crispy garlic chicken, charcoal-roasted pigeon. Lights on till 3 AM, walkable from Causeway Bay MTR.",
-        address: "Shop B, G/F, 16 Bowrington Road, Wan Chai · MTR Causeway Bay · cash only",
-        price: "$$",
-        hours: "Daily 17:00–03:00",
-        phone: "+852 2838 8998",
-        maps: "https://www.google.com/maps/search/Kui+Kee+Seafood+16+Bowrington+Road+Wan+Chai"
-      },
-      {
-        name: "Dai Pai Dong Siu Chow",
-        zh: "大排檔小炒",
-        cuisine: "Cantonese · Stir-fry + Clay Pot",
-        hood: "Causeway Bay · Lockhart Road",
-        area: "hki",
-        seating: "indoor",
-        why: "A/C indoor DPD with plenty of room for a group — classic wok stir-fries plus sizzling clay-pot rice. Honey beef + potato, chilli-boiled fish, dace-stuffed trio. Easier set-up than a tarp-and-stool outdoor stall.",
-        address: "Shop A, G/F, Wah Fat Mansion, 405-419 Lockhart Road, Causeway Bay · MTR Causeway Bay · cash only",
-        price: "$",
-        hours: "Daily 17:30–22:30",
-        phone: "+852 2336 6664",
-        maps: "https://www.google.com/maps/search/Dai+Pai+Dong+Siu+Chow+Wah+Fat+Mansion+Lockhart+Road"
-      },
-      {
-        name: "Daisy Kitchen",
-        zh: "紫京海鮮飯",
-        cuisine: "Cantonese · Cooked-Food Centre",
-        hood: "Sai Ying Pun · Centre Street Market",
-        area: "hki",
-        seating: "indoor",
-        why: "Tiny A/C stall (~12 tables) inside the Centre Street cooked-food centre, open till 2 AM. Oyster omelette, salt-yolk squid, minced-pork eggplant. Easy detour from Sheung Wan or Sai Ying Pun side.",
-        address: "2/F, Centre Street Market, 44 Centre Street, Sai Ying Pun · MTR Sai Ying Pun · cash only",
-        price: "$",
-        hours: "Daily until ~02:00 (call to confirm dinner start)",
-        phone: "+852 2547 5899",
-        maps: "https://www.google.com/maps/search/Daisy+Kitchen+Centre+Street+Market+Sai+Ying+Pun"
-      },
-      {
-        name: "ChorLand Cookfood Stall",
-        zh: "楚撚記大排檔",
-        cuisine: "Modern DPD · Cantonese",
-        hood: "To Kwa Wan · Po Kwong Building",
-        area: "klw",
-        seating: "indoor",
-        why: "Tatler-listed modernized DPD — typhoon-shelter squid, truffle minced-pork patties with lotus root, oat-crusted shrimp balls with salted egg yolk. Reservations via inline.app — be seated by 6:30 PM or queue. A standout if the group wants creative-but-still-DPD.",
-        address: "Shop C&D, G/F, Po Kwong Building, 2C Ma Hang Chung Road, To Kwa Wan · cash + card (verify before going)",
-        price: "$$",
-        hours: "Dinner service (book via inline.app — arrive by 18:30)",
-        phone: "+852 3997 3661",
-        maps: "https://www.google.com/maps/search/ChorLand+Po+Kwong+Building+Ma+Hang+Chung+Road+To+Kwa+Wan"
-      },
-      {
-        name: "Wing Fat Seafood",
-        zh: "榮發大排檔",
-        cuisine: "Cantonese · Seafood + Clay Pot",
-        hood: "Jordan · Woosung Street",
-        area: "klw",
-        seating: "mixed",
-        why: "Standout stall inside the Woosung Street Cooked Food Bazaar (reopened 2021 with the barrel-shaped roof). Braised clams with oil + salt, braised Bombay duck, boiled sea snails in spicy Chinese wine, black-bean stir-fried clams. Open till 1 AM.",
-        address: "Shop 6-8, G/F, Temporary Cooked Food Hawker Bazaar, 29-39 Woosung Street, Jordan · MTR Jordan · cash only",
-        price: "$",
-        hours: "Daily 17:00–01:00",
-        phone: "+852 6938 8472",
-        maps: "https://www.google.com/maps/search/Wing+Fat+Seafood+Woosung+Street+Jordan"
-      },
-      {
-        name: "Temple Spice Crabs",
-        zh: "廟街香辣蟹",
-        cuisine: "Cantonese · Spicy Crab + Seafood",
-        hood: "Jordan · Temple Street",
-        area: "klw",
-        seating: "outdoor",
-        why: "Namesake spicy crabs (live mud crabs picked from the tank, fried with chilli, garlic, five-spice). Quintessential Temple Street night-market DPD — busy, fast, table-turn focused. Pick-from-tank crayfish + lobsters too.",
-        address: "G/F, 210 Temple Street, Jordan · MTR Jordan Exit A · cash only",
-        price: "$$",
-        hours: "Dinner / late-night service (call to confirm) (verify before going)",
-        phone: "",
-        maps: "https://www.google.com/maps/search/Temple+Spice+Crabs+210+Temple+Street+Jordan"
-      },
-      {
-        name: "Haiphong Road Cooked Food Bazaar",
-        zh: "海防道臨時熟食小販市場",
-        cuisine: "Multi-stall · Noodles, Pork Chops, Hainan Chicken",
-        hood: "Tsim Sha Tsui · under the Haiphong Road flyover",
-        area: "klw",
-        seating: "indoor",
-        why: "Whole-bazaar pick — 9 stalls in a renovated 2020 space tucked under the flyover. Hap Heung Yuen's satay beef noodles (40+ years), Wah Heung Yuen pork chops, Man Kee Hainan chicken rice, Tak Fat beef balls. Order across stalls, share at one table. Closest cooked-food-centre experience to TST hotels.",
-        address: "Haiphong Road Temporary Cooked Food Hawker Bazaar, near Kowloon Park · MTR Tsim Sha Tsui Exit A1 · cash only",
-        price: "$",
-        hours: "Stalls vary — most open through dinner (call individual stall to confirm) (verify before going)",
-        phone: "+852 2376 1211 (bazaar office)",
-        maps: "https://www.google.com/maps/search/Haiphong+Road+Temporary+Cooked+Food+Hawker+Bazaar+Tsim+Sha+Tsui"
-      },
-      {
-        name: "Tai Yuen Dai Pai Dong",
-        zh: "泰源大排檔",
-        cuisine: "Cantonese · Roast Pigeon + Seafood",
-        hood: "Fo Tan · Cooked Food Market (East)",
-        area: "nt",
-        seating: "indoor",
-        why: "Roast pigeon (smaller, younger birds — crispier skin) + salt-and-pepper tofu + razor clams cooked how-you-want. A/C indoor cooked-food-market venue, open till 3 AM. Real outer-NT pick — Fo Tan MTR (East Rail), 4 stops from Mong Kok East.",
-        address: "Fo Tan Cooked Food Market (East), Shan Mei Street, Fo Tan · MTR Fo Tan · cash only",
-        price: "$",
-        hours: "Daily 18:00–03:00",
-        phone: "+852 2697 3656",
-        maps: "https://www.google.com/maps/search/Tai+Yuen+Dai+Pai+Dong+Fo+Tan+Cooked+Food+Market"
-      }
-    ];
-
     const grid = document.getElementById('grid');
-    const dpdGridHki = document.getElementById('dpd-grid-hki');
-    const dpdGridKlw = document.getElementById('dpd-grid-klw');
-    const dpdGridNt = document.getElementById('dpd-grid-nt');
     const toast = document.getElementById('toast');
 
     function showToast(text) {
@@ -746,16 +478,11 @@
 
     // Assign stable IDs to every venue row, in-place.
     venues.forEach((v, i) => { v.id = `sit-${slugify(v.name)}-${i}`; });
-    dpdVenues.forEach((v, i) => { v.id = `dpd-${slugify(v.name)}-${i}`; });
 
     // ============================================================
     // CHINESE TRANSLATIONS (HK 繁體) — keyed by venue id
-    // Translates: cuisine, hood, why, hours, phone (for Chinese
-    // notes like "致電預訂"), address (for things like "只收現金" tail)
-    // Untranslated fields stay flat English on the venue row.
     // ============================================================
     const TRANSLATIONS = {
-      // ---------- Sit-down ----------
       'sit-new-punjab-club-0': {
         cuisine: '旁遮普菜 · 印度菜',
         hood: '中環',
@@ -870,98 +597,6 @@
         why: 'Black Sheep 旗下 1960年代夜總會風嘅川菜廳 — 與扶霞合作開發食譜。紅油抄手、擔擔麵、棒棒雞、水煮牛。',
         hours: '每日午市 12:00–14:30 · 晚市:日至二 18:00–22:00,三至四 18:00–22:30,五至六 18:00–22:45',
       },
-
-      // ---------- DPD ----------
-      'dpd-sing-kee-0': {
-        cuisine: '粵菜 · 鑊氣小炒',
-        hood: '中環 · 士丹利街',
-        why: '中環最後一檔露天大排檔 — 士丹利街上嘅膠櫈遮陽傘。椒鹽鮮魷、炒蟹、煲仔茄子。人均約 HK$80。',
-        hours: '每日 11:00–15:00, 17:00–23:00',
-      },
-      'dpd-keung-kee-wan-chai-1': {
-        cuisine: '糯米飯 · 煎腸粉',
-        hood: '灣仔 · 駱克道',
-        why: '以生炒糯米飯同煎腸粉聞名。輕鬆地道,街坊客為主。同深水埗強記係兩間舖。',
-        hours: '二至日 12:00–22:00 · 一休息',
-      },
-      'dpd-hip-shing-dai-pai-dong-2': {
-        cuisine: '粵菜 · 鑊氣小炒',
-        hood: '炮台山 · 電氣道',
-        why: '隱世家庭式大排檔。長時間全日營業,街坊客為主,遊客少。',
-        hours: '每日 11:00–23:00',
-      },
-      'dpd-oi-man-sang-3': {
-        cuisine: '粵菜 · 鑊氣海鮮',
-        hood: '深水埗',
-        why: '1956年至今 — 全港最老牌大排檔之一。室內冷氣,街邊鑊氣猛火。椒鹽鮮魷、蒜蓉蒸蟶子、鹹蛋黃蝦。每道菜夠2-3人食,啱開枱。電子排隊,繁忙時段等30-60分鐘。',
-        hours: '每日 16:30–24:00(最後落單 23:00)',
-      },
-      'dpd-dai-lee-dai-pai-dong-4': {
-        cuisine: '粵菜 · 家常菜',
-        hood: '深水埗 · 北河街',
-        why: '50年歷史,家庭經營。位於北河街街市熟食中心樓上。椒鹽炸乳鴿、鹹魚肉碎茄子煲、冬菇雞煲。可開大鍋打邊爐。',
-        hours: '供應晚市(請致電確認)',
-      },
-      'dpd-ladies-street-sik-faan-5': {
-        cuisine: '新派大排檔',
-        hood: '旺角 · 通菜街',
-        why: '新派大排檔 — 霓虹招牌、鐵閘裝潢。蝦多士、蜜糖椒鹽牛仔粒、咕嚕肉。室內冷氣、接受預訂,對混合語言團體較方便。每枱限90分鐘。',
-        hours: '每日 18:00–24:00',
-      },
-      'dpd-chan-kun-kee-6': {
-        cuisine: '新派粵菜大排檔',
-        hood: '沙田石門 · 京瑞廣場二期',
-        why: '40年老字號。2018年遷入冷氣店面,設12個爐頭、90張枱 — 容納人數最多。燒乳鴿、炸蠔餅、椒鹽鮮魷、手撕芥末雞、冬蔭蜆。由金鐘搭東鐵約30分鐘到。營業至凌晨1:30。',
-        hours: '每日 17:00–01:30',
-      },
-      'dpd-kui-kee-seafood-7': {
-        cuisine: '粵菜 · 避風塘海鮮',
-        hood: '灣仔 · 寶靈頓道',
-        why: '寶靈頓道夜宵名店 — 避風塘炒蟹、椒鹽瀨尿蝦、脆皮蒜香雞、炭燒乳鴿。營業至凌晨3點,由銅鑼灣港鐵站行得到。',
-        hours: '每日 17:00–03:00',
-      },
-      'dpd-dai-pai-dong-siu-chow-8': {
-        cuisine: '粵菜 · 鑊氣小炒 + 煲仔',
-        hood: '銅鑼灣 · 駱克道',
-        why: '室內冷氣大排檔,夠位開大枱 — 經典鑊氣小炒加滾燙煲仔飯。蜜糖牛仔粒、水煮魚、煎釀三寶。比起帆布櫈嘅露天檔舖更易安頓。',
-        hours: '每日 17:30–22:30',
-      },
-      'dpd-daisy-kitchen-9': {
-        cuisine: '粵菜 · 熟食中心',
-        hood: '西營盤 · 正街街市',
-        why: '正街熟食中心內嘅迷你冷氣檔(約12張枱),營業至凌晨2點。蠔餅、鹹蛋黃魷魚、肉碎茄子。由上環或西營盤行過去都方便。',
-        hours: '每日營業至約 02:00(晚市開始時間請致電確認)',
-      },
-      'dpd-chorland-cookfood-stall-10': {
-        cuisine: '新派粵菜大排檔',
-        hood: '土瓜灣 · 寶光大廈',
-        why: 'Tatler 推薦嘅新派大排檔 — 避風塘魷魚、松露豬肉蓮藕餅、鹹蛋黃燕麥蝦球。透過 inline.app 預訂 — 6:30 PM 前要入座,否則排隊。如果想創新但仍保留大排檔風味,此乃首選。',
-        hours: '供應晚市(請透過 inline.app 預訂,18:30 前到場)',
-      },
-      'dpd-wing-fat-seafood-11': {
-        cuisine: '粵菜 · 海鮮 + 煲仔',
-        hood: '佐敦 · 吳松街',
-        why: '位於吳松街熟食小販市場(2021年重開,圓拱屋頂)嘅人氣檔。油鹽水浸蜆、滷水九棍魚、辣酒煮花螺、豉椒炒蜆。營業至凌晨1點。',
-        hours: '每日 17:00–01:00',
-      },
-      'dpd-temple-spice-crabs-12': {
-        cuisine: '粵菜 · 香辣蟹 + 海鮮',
-        hood: '佐敦 · 廟街',
-        why: '招牌香辣蟹(活水蟹即叫即劏,加辣椒、蒜頭、五香炒)。典型廟街夜市大排檔 — 熱鬧、快、講求轉枱率。亦有水缸揀嘅小龍蝦同龍蝦。',
-        hours: '供應晚市 / 宵夜(請致電確認)(出發前請查詢)',
-      },
-      'dpd-haiphong-road-cooked-food-bazaar-13': {
-        cuisine: '多檔 · 牛腩麵、豬扒、海南雞',
-        hood: '尖沙咀 · 海防道天橋底',
-        why: '整個熟食市場之選 — 2020年翻新嘅9個檔位,藏喺天橋底。合香園沙嗲牛肉麵(40年歷史)、華香園豬扒、文記海南雞飯、得發牛丸。可跨檔點菜共枱食。最就腳尖沙咀酒店嘅熟食中心體驗。',
-        hours: '各檔不同 — 大部分供應晚市(請致電個別檔位確認)(出發前請查詢)',
-      },
-      'dpd-tai-yuen-dai-pai-dong-14': {
-        cuisine: '粵菜 · 燒乳鴿 + 海鮮',
-        hood: '火炭 · 熟食市場(東)',
-        why: '燒乳鴿(細隻、年幼鴿 — 皮更脆)+ 椒鹽豆腐 + 蟶子(任揀煮法)。冷氣熟食市場場地,營業至凌晨3點。真正出走新界嘅選擇 — 由旺角東搭東鐵4個站到火炭。',
-        hours: '每日 18:00–03:00',
-      },
     };
 
     // Look up a translated field; falls back to the venue's English field if missing.
@@ -974,36 +609,18 @@
 
     // Lookup map for picks → venue row.
     const venueById = new Map();
-    venues.forEach(v => venueById.set(v.id, { ...v, _kind: 'sit' }));
-    dpdVenues.forEach(v => venueById.set(v.id, { ...v, _kind: 'dpd' }));
-
-    function seatingBadgeLabel(seating) {
-      if (seating === 'indoor') return t('seatingIndoor');
-      if (seating === 'outdoor') return t('seatingOutdoor');
-      if (seating === 'mixed') return t('seatingMixed');
-      return '';
-    }
-    const SEATING_BADGE_CLASSES = {
-      indoor:  'bg-sky-100 text-sky-800',
-      outdoor: 'bg-amber-100 text-amber-800',
-      mixed:   'bg-stone-200 text-stone-700',
-    };
+    venues.forEach(v => venueById.set(v.id, v));
 
     function cardHtml(v) {
       const zh = v.zh ? `<p class="text-sm text-slate-500 mt-0.5">${escapeHtml(v.zh)}</p>` : '';
       const phone = v.phone ? `<span class="inline-flex items-center gap-1"><span aria-hidden="true">☎</span><a href="tel:${escapeHtml(v.phone.replace(/\s+/g,''))}" class="hover:text-amber-700 underline-offset-2 hover:underline">${escapeHtml(v.phone)}</a></span>` : '';
       const hoursStr = tv(v, 'hours');
       const hours = hoursStr ? `<p class="text-xs text-slate-500 mt-1 leading-snug"><span aria-hidden="true">🕒</span> ${escapeHtml(hoursStr)}</p>` : '';
-      const seatingClasses = v.seating && SEATING_BADGE_CLASSES[v.seating];
-      const seatingBadge = seatingClasses
-        ? `<span class="text-xs px-2 py-0.5 rounded-full ${seatingClasses} font-medium">${escapeHtml(seatingBadgeLabel(v.seating))}</span>`
-        : '';
-      const dataSeating = v.seating ? ` data-seating="${escapeHtml(v.seating)}"` : '';
       const venueId = escapeHtml(v.id);
       // Copy-name button copies Chinese name when in zh mode and a zh name exists; else English.
       const copyTarget = (currentLang === 'zh' && v.zh) ? v.zh : v.name;
       return `
-        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm" data-venue-id="${venueId}"${dataSeating}>
+        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm" data-venue-id="${venueId}">
           <header>
             <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">${escapeHtml(v.name)}</h2>
             ${zh}
@@ -1013,7 +630,6 @@
             <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-medium">${escapeHtml(tv(v, 'cuisine'))}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 font-medium">${escapeHtml(tv(v, 'hood'))}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-medium">${escapeHtml(v.price)}</span>
-            ${seatingBadge}
           </div>
 
           <p class="text-sm text-slate-700 italic leading-snug">${escapeHtml(tv(v, 'why'))}</p>
@@ -1055,25 +671,11 @@
       document.getElementById('hero-intro').innerHTML = t('heroIntroHtml');
       document.getElementById('hero-sub').textContent = t('heroSub');
 
-      // Section headers
+      // Section header
       document.getElementById('sitdown-header').textContent = t('sectionSitdown');
-      document.getElementById('dpd-header').textContent = t('sectionDpd');
-      document.getElementById('dpd-intro').textContent = t('dpdIntro');
-
-      // Filter pills
-      document.getElementById('dpd-filter-label').textContent = t('filterLabel');
-      document.querySelector('.dpd-filter-btn[data-filter="all"]').textContent = t('filterAll');
-      document.querySelector('.dpd-filter-btn[data-filter="indoor"]').textContent = t('filterIndoor');
-      document.querySelector('.dpd-filter-btn[data-filter="outdoor"]').textContent = t('filterOutdoor');
-      document.querySelector('.dpd-filter-btn[data-filter="mixed"]').textContent = t('filterMixed');
-
-      // Area sub-headers
-      document.getElementById('area-hki').textContent = t('areaHki');
-      document.getElementById('area-klw').textContent = t('areaKlw');
-      document.getElementById('area-nt').textContent = t('areaNt');
 
       // Footer
-      document.getElementById('footer-note').innerHTML = t('footerNote');
+      document.getElementById('footer-note').textContent = t('footerNote');
       document.getElementById('footer-meta').textContent = t('footerMeta');
 
       // Picks bar buttons
@@ -1087,41 +689,6 @@
     function render() {
       grid.innerHTML = venues.map(cardHtml).join('');
       attachCopyHandler(grid);
-
-      dpdGridHki.innerHTML = dpdVenues.filter(v => v.area === 'hki').map(cardHtml).join('');
-      dpdGridKlw.innerHTML = dpdVenues.filter(v => v.area === 'klw').map(cardHtml).join('');
-      dpdGridNt.innerHTML  = dpdVenues.filter(v => v.area === 'nt').map(cardHtml).join('');
-      attachCopyHandler(dpdGridHki);
-      attachCopyHandler(dpdGridKlw);
-      attachCopyHandler(dpdGridNt);
-    }
-
-    function applyDpdFilter(filter) {
-      const grids = [dpdGridHki, dpdGridKlw, dpdGridNt];
-      grids.forEach(g => {
-        g.querySelectorAll('article[data-seating]').forEach(card => {
-          const match = filter === 'all' || card.dataset.seating === filter;
-          card.classList.toggle('hidden', !match);
-        });
-      });
-      document.querySelectorAll('.dpd-filter-btn').forEach(btn => {
-        const isActive = btn.dataset.filter === filter;
-        btn.classList.toggle('ring-2', isActive);
-        btn.classList.toggle('ring-offset-2', isActive);
-        btn.classList.toggle('ring-slate-800', isActive);
-      });
-    }
-
-    let currentFilter = 'all';
-    function wireDpdFilter() {
-      const bar = document.getElementById('dpd-filter');
-      if (!bar) return;
-      bar.addEventListener('click', (e) => {
-        const btn = e.target.closest('.dpd-filter-btn');
-        if (!btn) return;
-        currentFilter = btn.dataset.filter;
-        applyDpdFilter(currentFilter);
-      });
     }
 
     // ---------- Picks (client-side voting + clipboard export) ----------
@@ -1199,12 +766,10 @@
         const v = venueById.get(id);
         if (!v) return null;
         // Use translated cuisine + hood for the bullet when in zh mode.
-        const cuisineStr = tv(v, 'cuisine');
         const hoodStr = tv(v, 'hood');
-        const cuisineParens = v._kind === 'dpd' && cuisineStr ? ` (${cuisineStr})` : '';
         // Use Chinese venue name when in zh mode and a zh name exists, else English.
         const displayName = (currentLang === 'zh' && v.zh) ? `${v.name} ${v.zh}` : v.name;
-        return `• ${displayName}${cuisineParens} — ${hoodStr} — ${v.maps}`;
+        return `• ${displayName} — ${hoodStr} — ${v.maps}`;
       }).filter(Boolean);
       return `${t('clipboardHeader')(n)}\n\n${lines.join('\n')}\n\n${t('clipboardFooter')}`;
     }
@@ -1260,7 +825,7 @@
     }
 
     function wirePicks() {
-      // Click delegation on body — pick buttons can be inside either main grid or DPD grids.
+      // Click delegation on body — pick buttons are inside the main grid.
       document.body.addEventListener('click', (e) => {
         const btn = e.target.closest('button[data-pick]');
         if (!btn) return;
@@ -1300,8 +865,6 @@
       render();
       syncPickButtons();
       renderBar();
-      // Re-apply current DPD filter (re-render wipes the .hidden classes).
-      applyDpdFilter(currentFilter);
     }
 
     function wireLangToggle() {
@@ -1320,7 +883,6 @@
     renderStatic();
     loadPicks();
     render();
-    wireDpdFilter();
     syncPickButtons();
     renderBar();
     wirePicks();
