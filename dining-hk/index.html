@@ -112,10 +112,25 @@
   <!-- Grid -->
   <main class="max-w-6xl mx-auto px-5 pb-12">
     <h2 id="sitdown-header" class="text-xl sm:text-2xl font-bold tracking-tight mb-4 flex items-center gap-2"></h2>
-    <div id="group-filter" class="flex flex-wrap items-center gap-2 mb-6 text-xs">
+    <div id="group-filter" class="flex flex-wrap items-center gap-2 mb-3 text-xs">
       <span id="group-filter-label" class="text-slate-500 font-medium uppercase tracking-wide"></span>
       <button type="button" data-filter="all" class="group-filter-btn px-3 py-1 rounded-full bg-slate-800 text-white font-medium transition-colors"></button>
       <button type="button" data-filter="groups" class="group-filter-btn px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 hover:bg-emerald-200 font-medium transition-colors"></button>
+    </div>
+    <div id="day-filter" class="flex flex-wrap items-center gap-2 mb-6 text-xs">
+      <span id="day-filter-label" class="text-slate-500 font-medium uppercase tracking-wide"></span>
+      <select id="day-filter-select"
+        class="text-xs px-3 py-1 rounded-full bg-white border border-stone-300 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-amber-400">
+        <option value="any" data-i18n="dayAny"></option>
+        <option value="today" data-i18n="dayOpenToday"></option>
+        <option value="1" data-i18n="dayMon"></option>
+        <option value="2" data-i18n="dayTue"></option>
+        <option value="3" data-i18n="dayWed"></option>
+        <option value="4" data-i18n="dayThu"></option>
+        <option value="5" data-i18n="dayFri"></option>
+        <option value="6" data-i18n="daySat"></option>
+        <option value="0" data-i18n="daySun"></option>
+      </select>
     </div>
     <div id="grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
   </main>
@@ -158,7 +173,7 @@
       en: {
         heroTitle: 'HK Dinner Options',
         heroIntroHtml: 'Kevin\'s shortlist for our group dinner — tap a card to open in Maps, or hit <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 Copy name</span> to drop the venue name straight into the group chat.',
-        heroSub: '20 sit-down picks across Hong Kong Island and Kowloon. Mix of Michelin, neighborhood favorites, and crowd-pleasers. Tap "👥 Groups (6+)" to filter for our larger meals.',
+        heroSub: '21 sit-down picks across Hong Kong Island and Kowloon. Mix of Michelin, neighborhood favorites, and crowd-pleasers. Tap "👥 Groups (6+)" to filter for our larger meals, or use "Open today" to hide closed spots.',
         sectionSitdown: '🍽️ Sit-down',
         openMaps: '🗺️ Open in Maps',
         copyName: '💬 Copy name',
@@ -175,18 +190,28 @@
         fallbackHeader: 'Auto-copy didn\'t work — select all and copy manually, then paste into WhatsApp.',
         fallbackClose: 'Close',
         footerNote: 'Tap any card to open in Maps. Use 💬 Copy name to share a single venue, or 👍 Pick a few then 📋 Copy picks to drop the whole shortlist into chat.',
-        footerMeta: 'Last updated 2026-05-31 · 12 group-friendly · Built for friends, not for SEO · No tracking on this page.',
+        footerMeta: 'Last updated 2026-06-01 · 13 group-friendly · Built for friends, not for SEO · No tracking on this page.',
         clipboardHeader: (n) => `My HK dinner picks (${n}):`,
         clipboardFooter: 'Picked from kevinchau.github.io/dining-hk/',
         filterLabel: 'Filter:',
         filterAll: 'All',
         filterGroups: '👥 Groups (6+)',
         badgeGroupOk: '👥 Groups OK',
+        dayFilterLabel: 'Open:',
+        dayAny: 'Any day',
+        dayOpenToday: 'Open today',
+        dayMon: 'Mon',
+        dayTue: 'Tue',
+        dayWed: 'Wed',
+        dayThu: 'Thu',
+        dayFri: 'Fri',
+        daySat: 'Sat',
+        daySun: 'Sun',
       },
       zh: {
         heroTitle: '香港晚餐之選',
         heroIntroHtml: 'Kevin 為我哋聚餐揀嘅心水餐廳 — 撳卡片即可開啟地圖，或者撳 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium text-sm">💬 複製店名</span> 直接將店名貼入群組。',
-        heroSub: '20間正餐之選,遍佈香港島同九龍。包括米芝蓮、街坊名店同大眾化選擇。撳「👥 大團 (6人以上)」可篩選適合大團嘅選擇。',
+        heroSub: '21間正餐之選,遍佈香港島同九龍。包括米芝蓮、街坊名店同大眾化選擇。撳「👥 大團 (6人以上)」篩選大團選擇,或撳「今日營業」隱藏休息嘅店。',
         sectionSitdown: '🍽️ 正餐之選',
         openMaps: '🗺️ 在地圖開啟',
         copyName: '💬 複製店名',
@@ -203,13 +228,23 @@
         fallbackHeader: '自動複製失敗 — 請全選並手動複製,然後貼入 WhatsApp。',
         fallbackClose: '關閉',
         footerNote: '撳任何卡片即可開啟地圖。撳 💬 複製店名 分享單一餐廳,或者 👍 揀幾間之後撳 📋 複製揀選,將整份名單貼入群組。',
-        footerMeta: '最後更新 2026-05-31 · 12間適合大團 · 為朋友而設,並非為SEO · 本頁不作任何追蹤。',
+        footerMeta: '最後更新 2026-06-01 · 13間適合大團 · 為朋友而設,並非為SEO · 本頁不作任何追蹤。',
         clipboardHeader: (n) => `我的香港晚餐揀選 (${n}項):`,
         clipboardFooter: '自 kevinchau.github.io/dining-hk/ 揀選',
         filterLabel: '篩選:',
         filterAll: '全部',
         filterGroups: '👥 大團 (6人以上)',
         badgeGroupOk: '👥 大團 OK',
+        dayFilterLabel: '營業:',
+        dayAny: '任何日',
+        dayOpenToday: '今日營業',
+        dayMon: '一',
+        dayTue: '二',
+        dayWed: '三',
+        dayThu: '四',
+        dayFri: '五',
+        daySat: '六',
+        daySun: '日',
       },
     };
 
@@ -482,6 +517,19 @@
         phone: "+852 7073 7735",
         maps: "https://www.google.com/maps/search/Co+Thanh+Pacific+Place+Admiralty+Hong+Kong",
         groupOk: true
+      },
+      {
+        name: "Always Joy",
+        zh: "",
+        cuisine: "Japanese · Seasonal Izakaya",
+        hood: "Sheung Wan · Wing Lok Street",
+        why: "Yardbird team's (Matt Abergel + Lindsay Jang) izakaya next door — seasonal sharing plates, sashimi, ice-cold highballs. Spiritual successor to Ronin.",
+        address: "Shop 1, G/F, Nam Wo Hong Building, 148 Wing Lok Street, Sheung Wan",
+        price: "$$$",
+        hours: "Tue–Sat 18:00–late · Sun–Mon closed",
+        phone: "+852 2110 0148",
+        maps: "https://maps.app.goo.gl/UzS3NcBGxarM3na9A",
+        groupOk: true
       }
     ];
 
@@ -648,6 +696,12 @@
         why: '太古廣場內嘅輕鬆越南菜 — 越南河粉、法包、米粉碗。由港麗酒店大堂步行約3分鐘到。全日營業,免預約,適合大團。',
         hours: '每日 11:30–22:00',
       },
+      'sit-always-joy-20': {
+        cuisine: '日本菜 · 時令居酒屋',
+        hood: '上環 · 永樂街',
+        why: 'Yardbird 團隊(Matt Abergel + Lindsay Jang)隔壁嘅居酒屋 — 時令小食、刺身、冰凍 highball。Ronin 嘅精神延續。',
+        hours: '二至六 18:00–深夜 · 日、一休息',
+      },
     };
 
     // Look up a translated field; falls back to the venue's English field if missing.
@@ -662,6 +716,121 @@
     const venueById = new Map();
     venues.forEach(v => venueById.set(v.id, v));
 
+    // ============================================================
+    // HOURS-STRING → OPEN-DAYS PARSER
+    //
+    // Reads the English `hours` field (always present in canonical form
+    // — Chinese hours strings differ and we don't parse those) and
+    // returns either a sorted CSV of weekday ints (0=Sun..6=Sat) on
+    // which the venue is open, or "unknown" when we can't tell.
+    //
+    // Rules:
+    //  - "Daily" / "Mon–Sun" / "every day" → 0..6
+    //  - "Mon–Fri" / "Tue–Sat" etc. → contiguous range
+    //  - "Sat–Sun" → 6,0 (wraps)
+    //  - "Mon, Wed, Fri" / "Tue & Thu" → enumerated days
+    //  - any " closed" / " · Mon closed" → remove those days
+    //  - "(call to confirm)" / "(verify before going)" → unknown (we
+    //    can't pretend to know hours)
+    //  - if we extract zero days at the end → unknown (preserve the
+    //    "include if unknown" rule from the brief)
+    // ============================================================
+    const DAY_TOKEN = {
+      sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6,
+      sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6,
+    };
+
+    function expandRange(a, b) {
+      // inclusive, wraps around if b < a
+      const out = [];
+      let i = a;
+      // safety: cap at 8 iterations
+      for (let n = 0; n < 8; n++) {
+        out.push(i);
+        if (i === b) break;
+        i = (i + 1) % 7;
+      }
+      return out;
+    }
+
+    function parseHoursToDays(hoursStr) {
+      if (!hoursStr) return 'unknown';
+      const s = hoursStr.toLowerCase();
+      // Bail if hours flag uncertainty.
+      if (s.includes('call to confirm') || s.includes('verify before going')) {
+        return 'unknown';
+      }
+
+      // Split into clauses on " · " (typical day-set separator on this
+      // page) — each clause carries its own day set.
+      const clauses = s.split(/\s*·\s*/);
+      const openDays = new Set();
+      const closedDays = new Set();
+      let sawAnyDayInfo = false;
+
+      for (const raw of clauses) {
+        const c = raw.trim();
+        if (!c) continue;
+
+        // "X closed" clause → remove X from openDays at the end.
+        const closedMatch = c.match(/(sun|mon|tue|wed|thu|fri|sat)(?:day)?[–-]?(sun|mon|tue|wed|thu|fri|sat)?(?:day)?\s+closed/);
+        if (closedMatch) {
+          sawAnyDayInfo = true;
+          if (closedMatch[2]) {
+            expandRange(DAY_TOKEN[closedMatch[1]], DAY_TOKEN[closedMatch[2]]).forEach(d => closedDays.add(d));
+          } else {
+            closedDays.add(DAY_TOKEN[closedMatch[1]]);
+          }
+          continue;
+        }
+        // "closed X" variant
+        const closedMatch2 = c.match(/closed\s+(sun|mon|tue|wed|thu|fri|sat)(?:day)?/);
+        if (closedMatch2) {
+          sawAnyDayInfo = true;
+          closedDays.add(DAY_TOKEN[closedMatch2[1]]);
+          continue;
+        }
+
+        // "Daily" / "every day" → 0..6
+        if (/\b(daily|every\s*day|7\s*days)\b/.test(c)) {
+          sawAnyDayInfo = true;
+          [0,1,2,3,4,5,6].forEach(d => openDays.add(d));
+          continue;
+        }
+
+        // Pull out every day-token / range / connector at the start
+        // of the clause. Examples we need to handle:
+        //   "mon–tue & thu–sun 12:00–15:00, 18:00–23:00"
+        //   "tue–sun 12:00–15:30, 17:30–22:45"
+        //   "mon 17:30–22:45"
+        //   "sun–wed 18:00–22:30"
+        //   "lunch daily 12:00–14:30" → handled above (daily)
+        //   "dinner sun–tue 18:00–22:00, wed–thu 18:00–22:30, fri–sat 18:00–22:45"
+        //     ← multi-day inside one clause; we walk all matches.
+
+        const dayPart = c.split(/\d/)[0]; // up to the first digit (time)
+        const tokenRe = /(sun|mon|tue|wed|thu|fri|sat)(?:day)?\s*[–-]\s*(sun|mon|tue|wed|thu|fri|sat)(?:day)?|(sun|mon|tue|wed|thu|fri|sat)(?:day)?/g;
+        let m;
+        let foundAny = false;
+        while ((m = tokenRe.exec(dayPart)) !== null) {
+          foundAny = true;
+          if (m[1] && m[2]) {
+            expandRange(DAY_TOKEN[m[1]], DAY_TOKEN[m[2]]).forEach(d => openDays.add(d));
+          } else if (m[3]) {
+            openDays.add(DAY_TOKEN[m[3]]);
+          }
+        }
+        if (foundAny) sawAnyDayInfo = true;
+      }
+
+      if (!sawAnyDayInfo) return 'unknown';
+
+      // Apply closed set.
+      closedDays.forEach(d => openDays.delete(d));
+      if (openDays.size === 0) return 'unknown';
+      return [...openDays].sort((a,b) => a-b).join(',');
+    }
+
     function cardHtml(v) {
       const zh = v.zh ? `<p class="text-sm text-slate-500 mt-0.5">${escapeHtml(v.zh)}</p>` : '';
       const phone = v.phone ? `<span class="inline-flex items-center gap-1"><span aria-hidden="true">☎</span><a href="tel:${escapeHtml(v.phone.replace(/\s+/g,''))}" class="hover:text-amber-700 underline-offset-2 hover:underline">${escapeHtml(v.phone)}</a></span>` : '';
@@ -672,8 +841,10 @@
       const copyTarget = (currentLang === 'zh' && v.zh) ? v.zh : v.name;
       const groupAttr = v.groupOk ? ' data-group="yes"' : '';
       const groupBadge = v.groupOk ? `<span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-medium">${escapeHtml(t('badgeGroupOk'))}</span>` : '';
+      // Parse from the English hours field (canonical) — translations are display-only.
+      const daysCsv = parseHoursToDays(v.hours);
       return `
-        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm" data-venue-id="${venueId}"${groupAttr}>
+        <article class="card bg-white rounded-2xl border border-stone-200 p-5 flex flex-col gap-3 shadow-sm" data-venue-id="${venueId}" data-days="${escapeHtml(daysCsv)}"${groupAttr}>
           <header>
             <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">${escapeHtml(v.name)}</h2>
             ${zh}
@@ -732,6 +903,11 @@
       document.getElementById('group-filter-label').textContent = t('filterLabel');
       document.querySelector('.group-filter-btn[data-filter="all"]').textContent = t('filterAll');
       document.querySelector('.group-filter-btn[data-filter="groups"]').textContent = t('filterGroups');
+
+      // Day filter labels + option labels
+      const dayLabel = document.getElementById('day-filter-label');
+      if (dayLabel) dayLabel.textContent = t('dayFilterLabel');
+      syncDaySelect();
 
       // Footer
       document.getElementById('footer-note').textContent = t('footerNote');
@@ -895,23 +1071,54 @@
     }
 
     // ============================================================
-    // GROUP FILTER
+    // FILTERS — group + day (combined; all active filters must pass)
     // ============================================================
     let currentGroupFilter = 'all'; // 'all' | 'groups'
+    let currentDayFilter = 'any'; // 'any' | 'today' | '0'..'6'
 
-    function applyGroupFilter(filter) {
+    // Asia/Hong_Kong day-of-week (0=Sun..6=Sat). Done via toLocaleString
+    // → weekday short, then mapped — avoids needing an Intl polyfill
+    // and respects the host timezone request from the brief.
+    function todayInHKT() {
+      // 'en-US' short weekday: Sun, Mon, ...
+      const wd = new Date().toLocaleString('en-US', {
+        timeZone: 'Asia/Hong_Kong',
+        weekday: 'short',
+      }).toLowerCase().slice(0, 3);
+      return DAY_TOKEN[wd];
+    }
+
+    function venueMatchesDayFilter(card, filter) {
+      if (filter === 'any') return true;
+      const days = card.getAttribute('data-days') || 'unknown';
+      // Unknown hours → always include (don't drop on missing data).
+      if (days === 'unknown') return true;
+      const targetDay = filter === 'today' ? todayInHKT() : parseInt(filter, 10);
+      if (Number.isNaN(targetDay)) return true;
+      const set = days.split(',').map(s => parseInt(s, 10));
+      return set.includes(targetDay);
+    }
+
+    function applyFilters() {
       const cards = grid.querySelectorAll('article.card');
       cards.forEach(c => {
         const isGroup = c.getAttribute('data-group') === 'yes';
-        const show = filter === 'all' || (filter === 'groups' && isGroup);
-        c.style.display = show ? '' : 'none';
+        const groupOk = currentGroupFilter === 'all' || (currentGroupFilter === 'groups' && isGroup);
+        const dayOk = venueMatchesDayFilter(c, currentDayFilter);
+        c.style.display = (groupOk && dayOk) ? '' : 'none';
       });
       document.querySelectorAll('.group-filter-btn').forEach(btn => {
-        const isActive = btn.dataset.filter === filter;
+        const isActive = btn.dataset.filter === currentGroupFilter;
         btn.classList.toggle('ring-2', isActive);
         btn.classList.toggle('ring-offset-1', isActive);
         btn.classList.toggle('ring-slate-400', isActive);
       });
+    }
+
+    // Back-compat alias — older call sites still invoke applyGroupFilter().
+    function applyGroupFilter(filter) {
+      if (filter) currentGroupFilter = filter;
+      applyFilters();
     }
 
     function wireGroupFilter() {
@@ -921,8 +1128,29 @@
         const btn = e.target.closest('.group-filter-btn');
         if (!btn) return;
         currentGroupFilter = btn.dataset.filter;
-        applyGroupFilter(currentGroupFilter);
+        applyFilters();
       });
+    }
+
+    function wireDayFilter() {
+      const sel = document.getElementById('day-filter-select');
+      if (!sel) return;
+      sel.addEventListener('change', () => {
+        currentDayFilter = sel.value;
+        applyFilters();
+      });
+    }
+
+    function syncDaySelect() {
+      const sel = document.getElementById('day-filter-select');
+      if (!sel) return;
+      // Re-label every option per current lang. Value stays the same so
+      // current selection survives a lang flip.
+      sel.querySelectorAll('option').forEach(opt => {
+        const key = opt.getAttribute('data-i18n');
+        if (key) opt.textContent = t(key);
+      });
+      sel.value = currentDayFilter;
     }
 
     // ============================================================
@@ -955,7 +1183,7 @@
       render();
       syncPickButtons();
       renderBar();
-      applyGroupFilter(currentGroupFilter);
+      applyFilters();
     }
 
     function wireLangToggle() {
@@ -979,7 +1207,8 @@
     wirePicks();
     wireLangToggle();
     wireGroupFilter();
-    applyGroupFilter(currentGroupFilter);
+    wireDayFilter();
+    applyFilters();
   </script>
 </body>
 </html>
