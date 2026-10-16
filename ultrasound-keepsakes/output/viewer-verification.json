@@ -1,0 +1,82 @@
+{
+  "chromium": {
+    "engine": "chromium",
+    "assertions": [
+      "Prenatal GLB loads; loading clears; reduced motion disables rotation.",
+      "Keyboard rotation changes the rendered model; reset responds.",
+      "Age-one model loads, its disclaimer and downloads update.",
+      "Both model and portrait downloads return genuine GLB/PNG files.",
+      "No horizontal overflow at 320, 390, or 768px.",
+      "Tab-only navigation shows focus on 21 controls/links.",
+      "Optional rotation starts only on request and stops on manual control.",
+      "Failed mesh load shows portrait, clears loading, and recovers on retry.",
+      "No automatic third-party requests or uncaught script errors."
+    ],
+    "externalRequests": [],
+    "errors": [],
+    "focusItems": [
+      "Skip to portraits",
+      "\u25d2Ultrasound collection",
+      "Back to the scans",
+      "Prenatal keepsake",
+      "Imagined at one",
+      "Interactive prenatal keepsake. Use arrow keys to rotate, plus or minus to zoom, and Home to reset.",
+      "Save 3D model \u2193",
+      "Save portrait \u2193",
+      "Rotate left",
+      "Rotate right",
+      "Rotate up",
+      "Rotate down",
+      "Zoom out",
+      "Zoom in",
+      "Reset view",
+      "",
+      "Anatomy study \u2197",
+      "",
+      "Earlier study \u2197",
+      "About these portraits and their limits",
+      "Ultrasound collection"
+    ],
+    "passed": true
+  },
+  "webkit": {
+    "engine": "webkit",
+    "assertions": [
+      "Prenatal GLB loads; loading clears; reduced motion disables rotation.",
+      "Keyboard rotation changes the rendered model; reset responds.",
+      "Age-one model loads, its disclaimer and downloads update.",
+      "Both model and portrait downloads return genuine GLB/PNG files.",
+      "No horizontal overflow at 320, 390, or 768px.",
+      "Option-Tab navigation shows focus on 21 controls/links.",
+      "Optional rotation starts only on request and stops on manual control.",
+      "Failed mesh load shows portrait, clears loading, and recovers on retry.",
+      "No automatic third-party requests or uncaught script errors."
+    ],
+    "externalRequests": [],
+    "errors": [],
+    "focusItems": [
+      "Skip to portraits",
+      "\u25d2Ultrasound collection",
+      "Back to the scans",
+      "Prenatal keepsake",
+      "Imagined at one",
+      "Interactive prenatal keepsake. Use arrow keys to rotate, plus or minus to zoom, and Home to reset.",
+      "Save 3D model \u2193",
+      "Save portrait \u2193",
+      "Rotate left",
+      "Rotate right",
+      "Rotate up",
+      "Rotate down",
+      "Zoom out",
+      "Zoom in",
+      "Reset view",
+      "",
+      "Anatomy study \u2197",
+      "",
+      "Earlier study \u2197",
+      "About these portraits and their limits",
+      "Ultrasound collection"
+    ],
+    "passed": true
+  }
+}

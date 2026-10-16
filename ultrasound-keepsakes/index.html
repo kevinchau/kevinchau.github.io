@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Artistic keepsakes · Ultrasound collection</title>
+  <link rel="stylesheet" href="keepsake.css">
+</head>
+<body>
+  <a class="skip-link" href="#portraits">Skip to portraits</a>
+  <header class="site-header">
+    <a class="brand" href="https://stayhumblehkger.github.io/ultrasound-collection/"><span class="brand-mark" aria-hidden="true">◒</span><span>Ultrasound collection</span></a>
+    <a class="back-link" href="https://stayhumblehkger.github.io/ultrasound-collection/#view-035">Back to the scans</a>
+  </header>
+  <main>
+    <section class="introduction" aria-labelledby="page-title">
+      <h1 id="page-title">Artistic keepsakes</h1>
+      <div class="introduction-copy">
+        <p class="lead">Inspired by the ultrasound.<br>Not a measured reconstruction.</p>
+        <p>Two imagined sculptures to turn, explore, and keep.</p>
+      </div>
+    </section>
+
+    <section id="portraits" class="portrait-gallery" aria-label="Interactive artistic portraits">
+      <div class="portrait-picker" role="group" aria-label="Choose a portrait">
+        <button id="choose-prenatal" type="button" data-portrait="prenatal" aria-pressed="true">Prenatal keepsake</button>
+        <button id="choose-age-one" type="button" data-portrait="age-one" aria-pressed="false">Imagined at one</button>
+      </div>
+      <figure class="portrait">
+        <div id="model-stage" class="model-stage" aria-busy="true">
+          <picture>
+            <source id="portrait-webp" type="image/webp" srcset="output/imagegen/prenatal-concept-600.webp 600w, output/imagegen/prenatal-concept-full.webp 1199w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 48px), (max-width: 1400px) calc(100vw - 80px), 1320px">
+            <img id="portrait-preview" class="portrait-preview" src="output/imagegen/prenatal-concept.png" width="1199" height="1312" alt="Artistic clay portrait inspired by a prenatal profile. Invented three-dimensional detail.">
+          </picture>
+          <canvas id="portrait-canvas" tabindex="0" aria-label="Interactive prenatal keepsake. Use arrow keys to rotate, plus or minus to zoom, and Home to reset." aria-describedby="interaction-help" hidden></canvas>
+          <div class="stage-note"><span class="stage-dot" aria-hidden="true"></span><span id="stage-mode">Still portrait</span></div>
+          <div id="load-message" class="load-message" role="status">Loading the sculpture…</div>
+          <button id="retry-load" class="retry-load" type="button" hidden>Try 3D again</button>
+        </div>
+        <figcaption class="portrait-caption">
+          <div><h2 id="portrait-title">Prenatal keepsake</h2><p id="portrait-description">An artistic interpretation of a profile, with imagined depth and unseen features.</p></div>
+          <div class="downloads"><a id="download-model" href="output/models/prenatal.glb" download>Save 3D model <span aria-hidden="true">↓</span></a><a id="download-portrait" href="output/imagegen/prenatal-concept.png" download>Save portrait <span aria-hidden="true">↓</span></a></div>
+        </figcaption>
+      </figure>
+      <div class="viewer-controls" aria-label="3D viewing controls">
+        <div class="control-group"><span class="control-label">Rotate</span><button type="button" data-action="left" aria-label="Rotate left" title="Rotate left" disabled>←</button><button type="button" data-action="right" aria-label="Rotate right" title="Rotate right" disabled>→</button><button type="button" data-action="up" aria-label="Rotate up" title="Rotate up" disabled>↑</button><button type="button" data-action="down" aria-label="Rotate down" title="Rotate down" disabled>↓</button></div>
+        <div class="control-group"><span class="control-label">Zoom</span><button type="button" data-action="out" aria-label="Zoom out" title="Zoom out" disabled>−</button><button type="button" data-action="in" aria-label="Zoom in" title="Zoom in" disabled>+</button></div>
+        <button class="reset-button" type="button" data-action="reset" disabled>Reset view</button>
+        <button id="auto-rotate" class="auto-button" type="button" aria-pressed="false" disabled><span class="toggle-track" aria-hidden="true"><span></span></span>Slow rotation</button>
+      </div>
+      <p id="interaction-help" class="interaction-help">Drag to turn. Scroll or pinch to zoom. With the sculpture focused, use arrow keys to turn, + / − to zoom, and Home to reset.</p>
+      <noscript><p class="noscript-note">JavaScript is needed to turn the 3D sculptures. The still portrait and download links remain available.</p><p class="noscript-note"><a href="output/imagegen/age-one-concept.png">View the imagined age-one portrait</a> · <a href="output/models/age-one.glb" download>Save the age-one 3D model</a>. An imagined portrait, not a prediction.</p></noscript>
+    </section>
+
+    <section class="source-section" aria-labelledby="source-title">
+      <div class="source-introduction"><h2 id="source-title">Where the idea began</h2><p>The visible profile is the starting point. The sculpture’s depth, other side, and fine facial details are imagined.</p><p>The age-one portrait is a separate creative interpretation. Ultrasound cannot tell us what a child will look like at one.</p></div>
+      <div class="source-images">
+        <figure><a href="https://stayhumblehkger.github.io/ultrasound-collection/#view-035"><img src="media/view-035.jpg" alt="Original ultrasound side profile from the anatomy study, view 035." loading="lazy" width="720" height="540"></a><figcaption><a href="https://stayhumblehkger.github.io/ultrasound-collection/#view-035">Anatomy study <span aria-hidden="true">↗</span></a><span>View 035 · Profile inspiration</span></figcaption></figure>
+        <figure><a href="https://stayhumblehkger.github.io/ultrasound-collection/#view-168"><img src="media/view-168.jpg" alt="Original ultrasound profile from the earlier nuchal-translucency study, view 168, shown for context only." loading="lazy" width="720" height="540"></a><figcaption><a href="https://stayhumblehkger.github.io/ultrasound-collection/#view-168">Earlier study <span aria-hidden="true">↗</span></a><span>View 168 · Context only</span></figcaption></figure>
+      </div>
+    </section>
+    <details class="provenance">
+      <summary>About these portraits and their limits</summary>
+      <div class="provenance-copy">
+        <p>The source collection contains flat ultrasound images and video clips from separate studies. It does not include a 3D volume or calibrated positions for the slices. Only the anatomy-study profile loosely informed the prenatal artwork; the earlier scan is shown for context. These views were not combined into a measured anatomical reconstruction. The age-one artwork was created independently without a scan reference.</p>
+        <p>The portraits are artistic meshes. They are not a verified likeness, a growth simulation, or a health assessment. The neutral clay appearance is an artistic choice; skin, eye, and hair color cannot be inferred from these scans.</p>
+        <p>Image generation created the artwork. The open-source TripoSR model then converted each illustration into a mesh locally. Read the <a href="METHODS.md">method and limitations</a> or <a href="output/pipeline-report.json">mesh-generation report</a>.</p>
+        <p>Each downloadable GLB is a three-dimensional object you can open in a compatible 3D viewer. The still portrait is a separate artwork and may differ from the mesh. Viewing uses <a href="vendor/three/README.txt">Three.js</a>, open-source software under the <a href="vendor/three/LICENSE">MIT license</a>. The viewer loads its code and assets from this site.</p>
+        <p><a href="output/ultrasound-artistic-keepsakes.zip" download>Download both models and portraits together</a> (ZIP, about 11 MB).</p>
+        <p>The original public scans retain their existing privacy treatment. Dates are not restored here.</p>
+      </div>
+    </details>
+  </main>
+  <footer class="site-footer"><span>Made for imagining. Kept with the originals.</span><a href="https://stayhumblehkger.github.io/ultrasound-collection/">Ultrasound collection</a></footer>
+  <script type="module" src="keepsake.js"></script>
+</body>
+</html>

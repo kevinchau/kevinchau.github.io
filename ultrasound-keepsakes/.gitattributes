@@ -1,0 +1,3 @@
+# Preserve exact upstream code and generated OBJ exports.
+vendor/** -whitespace
+output/models/*.obj -whitespace

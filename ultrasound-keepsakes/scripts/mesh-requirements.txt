@@ -1,0 +1,21 @@
+# Python 3.11, macOS arm64. No CUDA or Blender required.
+# Install this file first, then build the reviewed torchmcubes source at:
+# https://github.com/tatsy/torchmcubes/tree/879926d0ef58e6ce0ac2630fdecb5e53af7ed3ff
+# uv pip install --python .work/triposr/venv/bin/python --no-build-isolation .work/triposr/torchmcubes
+torch==2.6.0
+omegaconf==2.3.0
+Pillow==10.4.0
+einops==0.7.0
+transformers==4.35.2
+huggingface-hub==0.20.3
+trimesh==4.6.8
+numpy==1.26.4
+scipy==1.15.3
+scikit-image==0.24.0
+rembg[cpu]==2.0.61
+imageio[ffmpeg]==2.37.0
+setuptools==84.0.0
+cmake==4.4.4
+wheel==0.48.0
+scikit-build-core==1.1.1
+pybind11==3.1.0

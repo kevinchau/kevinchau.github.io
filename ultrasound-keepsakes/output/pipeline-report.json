@@ -1,0 +1,150 @@
+{
+  "generated_at_utc": "2026-10-16T00:27:20.801518+00:00",
+  "purpose": "Illustrative keepsake concepts; not medical reconstructions or predictions",
+  "limitation": "Illustrative AI concept generated from an artistically imagined image. Not a reconstruction of fetal anatomy, not an identity likeness, not an age progression prediction, and not suitable for diagnosis or measurement. Hidden surfaces are inferred by a generic object model. Units are arbitrary.",
+  "model": {
+    "name": "TripoSR",
+    "repository": "https://github.com/VAST-AI-Research/TripoSR",
+    "code_revision": "107cefdc244c39106fa830359024f6a2f1c78871",
+    "weights": "https://huggingface.co/stabilityai/TripoSR",
+    "weights_revision": "5b521936b01fbe1890f6f9baed0254ab6351c04a",
+    "weights_sha256": "429e2c6b22a0923967459de24d67f05962b235f79cde6b032aa7ed2ffcd970ee",
+    "license": "MIT (official code and pretrained weights)",
+    "dino_configuration_revision": "f205d5d8e640a89a2b8ef0369670dfc37cc07fc2"
+  },
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.11.10",
+    "torch": "2.6.0",
+    "device": "mps",
+    "threads": 6,
+    "packages": {
+      "transformers": "4.35.2",
+      "huggingface-hub": "0.20.3",
+      "omegaconf": "2.3.0",
+      "trimesh": "4.6.8",
+      "numpy": "1.26.4",
+      "Pillow": "10.4.0"
+    }
+  },
+  "parameters": {
+    "mesh_grid_resolution": 192,
+    "density_threshold": 25.0,
+    "chunk_size": 8192,
+    "foreground_ratio": 0.85,
+    "seed": 0,
+    "numerical_seam_weld_tolerance": 1e-06
+  },
+  "adaptations": [
+    "Wrapper selects Apple MPS explicitly; upstream run.py forces CPU when CUDA is absent.",
+    "Use pinned DINO configuration and safe weights_only=True state-dictionary loading.",
+    "Native torchmcubes compiled from reviewed revision 879926d0ef58e6ce0ac2630fdecb5e53af7ed3ff; density field is copied to CPU for its marching-cubes operation.",
+    "Apply upstream to_gradio_3d_orientation followed by 180 degrees about Y, visually verified to put the face toward +Z and the top of the head toward +Y; units remain arbitrary.",
+    "GLB includes computed smooth vertex normals, vertex colors and explicit matte PBR material (metallicFactor 0, roughnessFactor 0.9).",
+    "Weld vertices within 1e-6 arbitrary units to close native float32 marching-cubes seams; remove resulting zero-area faces. No new faces are created.",
+    "No texture baking, remeshing, smoothing, anatomical fitting, or procedural replacement geometry."
+  ],
+  "run_command": ".work/triposr/venv/bin/python scripts/generate_meshes.py --device mps --resolution 192 --chunk-size 8192",
+  "models": [
+    {
+      "name": "prenatal",
+      "label": "Prenatal illustration",
+      "input": "output/imagegen/prenatal-concept.png",
+      "input_sha256": "b1aff807ec692816ced5bb2b94590771b9eae53f310b6ccb6f9ef5010295767e",
+      "inference_seconds": 1.32,
+      "extraction_seconds": 1.01,
+      "vertices": 36041,
+      "faces": 72078,
+      "raw_faces": 72080,
+      "numerical_seam_vertices_welded": 77,
+      "degenerate_faces_removed": 2,
+      "tiny_fragment_faces_removed": 0,
+      "bounds": [
+        [
+          -0.3670142889022827,
+          -0.5040662288665771,
+          -0.22263497114181519
+        ],
+        [
+          0.4017525911331177,
+          0.4903721809387207,
+          0.3861691951751709
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "finite_vertices": true,
+      "positive_volume": true,
+      "units": "arbitrary; not millimeters",
+      "printing": "STL is a geometry interchange export, not a print-ready or dimensioned object. Self-intersections, minimum thickness, physical scale and slicer behavior are not validated.",
+      "glb_roundtrip_passed": true,
+      "files": [
+        {
+          "path": "output/models/prenatal.glb",
+          "bytes": 1875972,
+          "sha256": "54ec4b8320e7f7480060c7f6dfb571307c736d212b38ac2b1533a20f53de7327"
+        },
+        {
+          "path": "output/models/prenatal.obj",
+          "bytes": 6674808,
+          "sha256": "b4c0f55d325c2b3d1fa4ff8578bbb3ed286914f14dba295d7f39f5af67cdd694"
+        },
+        {
+          "path": "output/models/prenatal.stl",
+          "bytes": 3603984,
+          "sha256": "eb39f2d7fc494ddddfd6b9e1421ebf194d5d35de85713efac14e0c39b46da280"
+        }
+      ]
+    },
+    {
+      "name": "age-one",
+      "label": "Imagined age one",
+      "input": "output/imagegen/age-one-concept.png",
+      "input_sha256": "9a141cf516e32e7286bc6800e3d02412efa273a7330a28ddecd173b7129efcae",
+      "inference_seconds": 0.84,
+      "extraction_seconds": 0.92,
+      "vertices": 35700,
+      "faces": 71396,
+      "raw_faces": 71412,
+      "numerical_seam_vertices_welded": 85,
+      "degenerate_faces_removed": 8,
+      "tiny_fragment_faces_removed": 8,
+      "bounds": [
+        [
+          -0.3666970729827881,
+          -0.49328845739364624,
+          -0.28435301780700684
+        ],
+        [
+          0.40956616401672363,
+          0.4942671060562134,
+          0.34622514247894287
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "finite_vertices": true,
+      "positive_volume": true,
+      "units": "arbitrary; not millimeters",
+      "printing": "STL is a geometry interchange export, not a print-ready or dimensioned object. Self-intersections, minimum thickness, physical scale and slicer behavior are not validated.",
+      "glb_roundtrip_passed": true,
+      "files": [
+        {
+          "path": "output/models/age-one.glb",
+          "bytes": 1858244,
+          "sha256": "77715552df3f89dfac1e9c5b6fd57df7f0382b2630b9e1c1e333d21c6e78187c"
+        },
+        {
+          "path": "output/models/age-one.obj",
+          "bytes": 6613385,
+          "sha256": "a61f0ff8bd5c0f011e64134b9fca52472b5d3a6713f47fa744bc9650f27185f2"
+        },
+        {
+          "path": "output/models/age-one.stl",
+          "bytes": 3569884,
+          "sha256": "8b9087913273237d23b3e19892bf70022a0d0938ac03ed2261ee28b30dd92e78"
+        }
+      ]
+    }
+  ]
+}
